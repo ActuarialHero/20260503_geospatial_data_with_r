@@ -1,0 +1,22 @@
+## Outline
+
+::: {.incremental}
+- Types of Geospatial Data
+- Geocoding
+- Raster Data Sources
+- Vector Data Sources
+- Modeling the Cost of Home Insurance
+- Example Territory Maps
+- Considerations
+  - ZIP Codes
+  - Hawaii
+  - Alaska
+- Location-specific Data
+- Conclusion
+
+:::
+
+:::{.notes }
+
+
+:::

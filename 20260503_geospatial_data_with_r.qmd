@@ -1,0 +1,7 @@
+---
+title: "Geospatial Data & <br> Home Insurance Territories <br> (With R)"
+author: "Kevin McBeth, FCAS, MAAA"
+---
+
+{{< include slides/introduction.qmd >}}
+

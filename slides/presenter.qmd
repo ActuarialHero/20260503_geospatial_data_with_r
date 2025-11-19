@@ -1,0 +1,29 @@
+## Presenter
+
+::: columns
+
+::: {.column width="40%"}
+![](images/britts.jpeg)
+:::
+  
+::: {.column width="60%"}
+**Kevin McBeth, FCAS, MAAA**
+  
+Vice President - Corporate Actuarial
+
+Arch Insurance
+
+New York, NY
+
+:::
+
+:::
+  
+::: {.notes}
+
+Previously worked at
+- Travelers,
+- Crum and Forster, 
+- Solera/Explore Information Services, a Motor Vehicle Record Vendor, and
+- Coherent, a Series B start-up
+:::

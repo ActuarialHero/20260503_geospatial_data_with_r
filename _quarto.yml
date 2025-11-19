@@ -1,0 +1,15 @@
+
+project:
+  title: "20260503_geospatial_data_with_r"
+  output-dir: docs
+format:
+  revealjs:
+    theme: simple
+    fontsize: 1.5em
+    # embed-resources: true
+editor: 
+  mode: source
+  
+title-slide-attributes: 
+  data-background-image: images/tornado_yellow.png
+  data-background-opacity: "0.2"
