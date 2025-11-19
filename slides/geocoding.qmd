@@ -1,0 +1,11 @@
+## Where is the propety?
+
+- Geocoding
+
+  - Single point
+  - Mailbox vs. building
+  - May not be accurate, particularly for new properties
+  
+  - https://developers.google.com/maps/documentation/geocoding/reference/rest/v4beta/GeocodeResult.Granularity
+- Building Footprint
+  - Outline of the entire building

@@ -1,0 +1,10 @@
+# Vector Sources
+
+{{< include /slides/vector_file_types.qmd >}}
+
+{{< include /slides/census_intro.qmd >}}
+
+{{< include /slides/grids.qmd >}}
+
+{{< include /slides/newer_geometries.qmd >}}
+

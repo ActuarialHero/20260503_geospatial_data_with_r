@@ -1,0 +1,11 @@
+# Tech Stack
+
+## R & RStudio
+
+## RStudio
+
+## Quarto
+
+## GitHub
+
+## GitHub Pages

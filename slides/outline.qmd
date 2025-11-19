@@ -1,10 +1,11 @@
 ## Outline
 
 ::: {.incremental}
+- Tech Stack
 - Types of Geospatial Data
 - Geocoding
-- Raster Data Sources
 - Vector Data Sources
+- Raster Data Sources
 - Modeling the Cost of Home Insurance
 - Example Territory Maps
 - Considerations

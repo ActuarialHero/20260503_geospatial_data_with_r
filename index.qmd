@@ -5,3 +5,10 @@ author: "Kevin McBeth, FCAS, MAAA"
 
 {{< include slides/introduction.qmd >}}
 
+{{< include slides/tech_stack.qmd >}}
+
+{{< include slides/vector_sources.qmd >}}
+
+{{< include slides/raster_sources.qmd >}}
+
+{{< include /slides/location_data.qmd >}}

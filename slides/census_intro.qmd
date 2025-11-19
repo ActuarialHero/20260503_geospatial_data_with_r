@@ -1,0 +1,9 @@
+## Census Bureau Shapefiles
+
+- States - Use Connecticut
+- Counties
+- Cities
+- ZIP Codes
+- Tract
+- Block Group
+- Blocks

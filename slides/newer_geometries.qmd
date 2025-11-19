@@ -1,0 +1,21 @@
+## Newer Geometries
+
+- Spherical: s2 geometry
+  - http://s2geometry.io/
+  - https://r-spatial.github.io/s2/
+- Hexagonal: h3 geometry
+  - https://h3geo.org/
+- Hexagonal (not h3):
+  - Alfa Mutual using 2,600 hexagons coverage Alabama.
+  - Filing: ALFA-134414286
+  - Date Filed: 2025-05-14
+  - Date Effective: 2025-08-24
+
+::: {.notes}
+s2 was used by Tinder
+h3 is used by Uber
+
+Has an ever increasing number of territories as you zoom in
+Good for finding things in close proximity
+Alfa Mutual is the only reference to hexagonal geometries I could find. The IDs differ from h3 though, so they might have constructed their own hexagons
+:::

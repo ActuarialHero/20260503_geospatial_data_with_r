@@ -178,10 +178,11 @@ Kevin McBeth, FCAS, MAAA
 <section id="outline" class="slide level2">
 <h2>Outline</h2>
 <ul>
+<li class="fragment">Tech Stack</li>
 <li class="fragment">Types of Geospatial Data</li>
 <li class="fragment">Geocoding</li>
-<li class="fragment">Raster Data Sources</li>
 <li class="fragment">Vector Data Sources</li>
+<li class="fragment">Raster Data Sources</li>
 <li class="fragment">Modeling the Cost of Home Insurance</li>
 <li class="fragment">Example Territory Maps</li>
 <li class="fragment">Considerations
@@ -206,6 +207,126 @@ Kevin McBeth, FCAS, MAAA
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section></section>
+<section>
+<section id="tech-stack" class="title-slide slide level1 center">
+<h1>Tech Stack</h1>
+
+</section>
+<section id="r-rstudio" class="slide level2">
+<h2>R &amp; RStudio</h2>
+</section>
+<section id="rstudio" class="slide level2">
+<h2>RStudio</h2>
+</section>
+<section id="quarto" class="slide level2">
+<h2>Quarto</h2>
+</section>
+<section id="github" class="slide level2">
+<h2>GitHub</h2>
+</section>
+<section id="github-pages" class="slide level2">
+<h2>GitHub Pages</h2>
+</section></section>
+<section>
+<section id="vector-sources" class="title-slide slide level1 center">
+<h1>Vector Sources</h1>
+
+</section>
+<section id="vector-file-types" class="slide level2">
+<h2>Vector File Types</h2>
+<ul>
+<li class="fragment">Shapefile (.shp)</li>
+<li class="fragment">GeoJSON (.geojson, .json) Keyhole Markup Language (KML, KMZ)</li>
+<li class="fragment">Geography Markup Language (GML)</li>
+<li class="fragment">GPS eXchange Format (GPX)</li>
+</ul>
+</section>
+<section id="census-bureau-shapefiles" class="slide level2">
+<h2>Census Bureau Shapefiles</h2>
+<ul>
+<li>States - Use Connecticut</li>
+<li>Counties</li>
+<li>Cities</li>
+<li>ZIP Codes</li>
+<li>Tract</li>
+<li>Block Group</li>
+<li>Blocks</li>
+</ul>
+</section>
+<section id="grids" class="slide level2">
+<h2>Grids</h2>
+<ul>
+<li>MGRS</li>
+<li>Constructing your own</li>
+</ul>
+</section>
+<section id="newer-geometries" class="slide level2">
+<h2>Newer Geometries</h2>
+<ul>
+<li>Spherical: s2 geometry
+<ul>
+<li>http://s2geometry.io/</li>
+<li>https://r-spatial.github.io/s2/</li>
+</ul></li>
+<li>Hexagonal: h3 geometry
+<ul>
+<li>https://h3geo.org/</li>
+</ul></li>
+<li>Hexagonal (not h3):
+<ul>
+<li>Alfa Mutual using 2,600 hexagons coverage Alabama.</li>
+<li>Filing: ALFA-134414286</li>
+<li>Date Filed: 2025-05-14</li>
+<li>Date Effective: 2025-08-24</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>s2 was used by Tinder h3 is used by Uber</p>
+<p>Has an ever increasing number of territories as you zoom in Good for finding things in close proximity Alfa Mutual is the only reference to hexagonal geometries I could find. The IDs differ from h3 though, so they might have constructed their own hexagons</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section>
+<section id="raster-data-sources" class="title-slide slide level1 center">
+<h1>Raster Data Sources</h1>
+<p>(Slightly Bended Pictures)</p>
+</section>
+<section id="national-land-cover-dataset-nlcd" class="slide level2">
+<h2>National Land Cover Dataset (NLCD)</h2>
+</section>
+<section id="dem" class="slide level2">
+<h2>DEM</h2>
+</section></section>
+<section>
+<section id="location-specific-data" class="title-slide slide level1 center">
+<h1>Location-specific Data</h1>
+
+</section>
+<section id="where-is-the-propety" class="slide level2">
+<h2>Where is the propety?</h2>
+<ul>
+<li><p>Geocoding</p>
+<ul>
+<li><p>Single point</p></li>
+<li><p>Mailbox vs.&nbsp;building</p></li>
+<li><p>May not be accurate, particularly for new properties</p></li>
+<li><p>https://developers.google.com/maps/documentation/geocoding/reference/rest/v4beta/GeocodeResult.Granularity</p></li>
+</ul></li>
+<li><p>Building Footprint</p>
+<ul>
+<li>Outline of the entire building</li>
+</ul></li>
+</ul>
 
 </section></section>
     </div>
