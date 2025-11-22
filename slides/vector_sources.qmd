@@ -4,6 +4,8 @@
 
 {{< include /slides/census_intro.qmd >}}
 
+{{< include /slides/census_states.qmd >}}
+
 {{< include /slides/grids.qmd >}}
 
 {{< include /slides/newer_geometries.qmd >}}

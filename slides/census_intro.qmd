@@ -1,6 +1,6 @@
 ## Census Bureau Shapefiles
 
-- States - Use Connecticut
+- States
 - Counties
 - Cities
 - ZIP Codes

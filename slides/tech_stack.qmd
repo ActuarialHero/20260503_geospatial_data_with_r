@@ -1,11 +1,8 @@
-# Tech Stack
+## Tech Stack
 
-## R & RStudio
-
-## RStudio
-
-## Quarto
-
-## GitHub
-
-## GitHub Pages
+- R
+  - renv for the environment
+- RStudio
+- Quarto
+- GitHub
+- GitHub Pages

@@ -7,3 +7,5 @@
 {{< include /slides/slides.qmd >}}
 
 {{< include /slides/outline.qmd >}}
+
+{{< include /slides/tech_stack.qmd >}}

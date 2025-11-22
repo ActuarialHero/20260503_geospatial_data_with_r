@@ -1,0 +1,110 @@
+## States
+
+```{r Download Census State Shapefile}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Download Shapefiles"
+#| results: "hide"
+
+library(curl)
+
+url <- "https://www2.census.gov/geo/tiger/TIGER2025/STATE/tl_2025_us_state.zip"
+dest_in <- "./data_in/census/TIGER2025/STATE/tl_2025_us_state.zip"
+dest_mid <- "./data_mid/census/TIGER2025/STATE/tl_2025_us_state/tl_2025_us_state.zip"
+
+if(!file.exists(dest_in)) {
+  dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
+  curl_download(url, dest_in)
+  
+  dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
+  unzip(dest_in, exdir = dirname(dest_mid))
+}
+
+dest_mid
+
+```
+
+```{r Read Census State Shapefile into memory}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+library(sf)
+library(dplyr)
+
+# Read Census State Shapefile
+census_state  <- read_sf("./data_mid/census/TIGER2025/STATE/tl_2025_us_state/tl_2025_us_state.shp")
+
+# Print data table
+census_state %>% arrange(STATEFP)
+```
+
+::: {.notes}
+
+* Downloads the file from the Census Bureau Website.
+* I try to keep the same pathing as the source website. It makes it easier for a successor to see where to get future data updates
+* I tend to organize organize data into row, intermediate data sets, and final output data
+
+* We'll use the read_sf function in the simple features package to read the shapefile
+* There are two pieces were care about - a data table and the shapes. Let's look at the data table first
+
+* The summary at the top lets us know the bounding box, or extent, of the shapes.
+* Where it says "A tibble", it shows there are 56 of the 50 states + DC represented. The extras are the territories.
+* The columns we care about are STATEFP, STUSPS, and NAME
+* STATEFP is a handy code used throughout the Census data. If you look at rows 2 and 3, you'll see it skips from 02 to 04. The states are coded from 01 to 56, with placeholders to slot in territories alphabecially if they're converted to states. Note that on row 9, the Federal District, DC, is slotted in place with STATEFP = 11.
+
+:::
+
+## New York Leaflet Plot
+
+```{r Census State Leaflet Plot - NY}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Leaflet Code"
+
+library(leaflet)
+
+census_state %>%
+  filter(STUSPS == "NY") %>%
+  leaflet() %>%
+  addPolygons(weight = 0.5, opacity = 1.0)
+```
+
+## New York Leaflet Plot With Basemap
+
+```{r Census State Leaflet Plot With Basemap - NY}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Leaflet Code"
+
+library(leaflet)
+
+census_state %>%
+  filter(STUSPS == "NY") %>%
+  leaflet() %>%
+  addTiles() %>% # Added OpenStreetMap Basemap
+  addPolygons(weight = 0.5, opacity = 1.0)
+```
+
+## Entire State Shapefile
+
+```{r Census State - CW}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Leaflet Code"
+
+library(leaflet)
+
+census_state %>%
+  leaflet() %>%
+  addTiles() %>% # Added OpenStreetMap Basemap
+  addPolygons(weight = 0.5, opacity = 1.0)
+```
+
+
+::: {.notes}
+You'll notice a few things pretty quickly:
+1) The westernmost state in the U.S. is Alaska. The Easternmost State is...also Alaska
+2) We have the territories
+3) Sometimes the boards don't line up well when zoomed out. The look better zooming in
+:::
