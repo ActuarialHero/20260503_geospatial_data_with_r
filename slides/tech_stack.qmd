@@ -2,7 +2,9 @@
 
 - R
   - renv for the environment
-- RStudio
-- Quarto
-- GitHub
-- GitHub Pages
+  - air for code formatting
+- RStudio - IDE from Posit (formerly named RStudio)
+- Positron - VSCode-based IDE from Posit
+- Quarto - Presentation + code together
+- GitHub - Source code control
+- GitHub Pages - Publishing the rendered presentation online (automatically!)
