@@ -27,7 +27,7 @@ dest_mid
 ```{r Read Census State Shapefile into memory}
 #| echo: true
 #| code-fold: true
-#| code-summary: "Show code"
+#| code-summary: "Read Census Shapefile and display data"
 
 library(sf)
 library(dplyr)
