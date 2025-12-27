@@ -5,7 +5,7 @@ project:
 format:
   revealjs:
     theme: simple
-    fontsize: 1.5em
+    fontsize: 1.5em # 16px is standard, so this is 24 > 22 CAS minimum
     # embed-resources: true
 editor: 
   mode: source

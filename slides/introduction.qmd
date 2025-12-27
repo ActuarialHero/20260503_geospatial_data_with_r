@@ -4,6 +4,8 @@
 
 {{< include /slides/disclaimers.qmd >}}
 
+{{< include /slides/antitrust_notice.qmd >}}
+
 {{< include /slides/slides.qmd >}}
 
 {{< include /slides/outline.qmd >}}
