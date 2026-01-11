@@ -2,9 +2,9 @@
 
 {{< include /slides/presenter.qmd >}}
 
-{{< include /slides/disclaimers.qmd >}}
-
 {{< include /slides/antitrust_notice.qmd >}}
+
+{{< include /slides/disclaimers.qmd >}}
 
 {{< include /slides/slides.qmd >}}
 

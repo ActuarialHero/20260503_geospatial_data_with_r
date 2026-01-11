@@ -9,3 +9,9 @@
 - I am not an attorney. Comments about state statutes should not be treated as legal advice provided by a licensed attorney
 
 - Artistic interpretation of data contained in filings.
+
+::: {.notes}
+
+Government data license: https://resources.data.gov/open-licenses/
+
+:::
