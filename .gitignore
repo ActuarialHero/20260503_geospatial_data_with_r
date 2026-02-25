@@ -9,3 +9,4 @@ data_in/census/
 data_mid/census/
 renv/library/
 renv/staging/
+**/*.quarto_ipynb

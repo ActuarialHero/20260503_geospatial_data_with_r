@@ -1,0 +1,4 @@
+1) Clone repository
+renv::install(type = "binary") 
+2) Run renv:restore() in the RStudio console. This installs the same versions of the libraries used for the deck
+2b) sf may fail on with error code 1. Follow the directions to install gdal
