@@ -106,7 +106,7 @@ census_state %>%
 You'll notice a few things pretty quickly:
 1) The westernmost state in the U.S. is Alaska. The Easternmost State is...also Alaska
 2) We have the territories
-3) Sometimes the boards don't line up well when zoomed out. The look better zooming in
+3) Sometimes the borders don't line up well when zoomed out. They look better zooming in
 :::
 
 ## Entire State Shapefile
