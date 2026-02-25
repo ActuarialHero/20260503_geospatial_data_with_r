@@ -1,5 +1,5 @@
 ---
-title: "Geospatial Data & <br> Home Insurance Territories <br> (With R)"
+title: "Geospatial Data & <br> Homeowners Insurance <br> (With R)"
 author: "Kevin McBeth, FCAS, MAAA"
 ---
 
