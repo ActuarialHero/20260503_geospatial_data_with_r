@@ -1,0 +1,50 @@
+## National Land Cover Dataset (NLCD)
+
+Giant Raster (pixel) image
+
+```{r Download NLCD Raster}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Download NLCD Raster"
+#| results: "hide"
+
+library(curl)
+
+url <- "https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/data-bundles/Annual_NLCD_LndCov_2024_CU_C1V1.zip"
+dest_in <- "./data_in/nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.zip"
+dest_mid <- "./data_mid/nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.zip"
+
+if(!file.exists(dest_in)) {
+  dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
+  curl_download(url, dest_in)
+  
+  dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
+  unzip(dest_in, exdir = dirname(dest_mid))
+}
+
+dest_mid
+
+```
+
+```{r Countrywide NLCD Raster}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+library(terra)
+
+nlcd <- rast("data_mid/nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.tif")
+
+plot(nlcd)
+
+```
+
+::: {.notes }
+National Land Cover Data set
+
+Depicts the predominant thematic land cover class within the mapping year with respect to broad categories of artificial or natural surface cover
+
+30m x 30m grid
+105,000 x 160,000
+
+:::

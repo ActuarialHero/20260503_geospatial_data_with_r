@@ -6,7 +6,9 @@
 
 /.quarto/
 data_in/census/
+data_in/nlcd/
 data_mid/census/
+data_mid/nlcd/
 renv/library/
 renv/staging/
 **/*.quarto_ipynb
