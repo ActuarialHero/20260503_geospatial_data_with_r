@@ -1,0 +1,48 @@
+## USGS Digital Elevation Map (DEM)
+
+
+
+```{r Download DEM Rasters}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Download NLCD Raster"
+#| results: "hide"
+
+library(curl)
+
+url <- c("https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/current/n41w075/USGS_13_n41w075.tif",
+         "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/current/n41w074/USGS_13_n41w074.tif")
+dest_in <- c("./data_in/dem/USGS_13_n41w075.tif","./data_in/dem/USGS_13_n41w074.tif")
+
+for(i in 1:length(url)){
+  if(!file.exists(dest_in[i])) {
+    dir.create(dirname(dest_in[i]), recursive = TRUE, showWarnings = FALSE)
+    curl_download(url[i], dest_in[i])
+  }
+}
+```
+
+```{r A slice of the DEM}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Merge and display DEM"
+
+library(terra)
+terraOptions(progress=0)
+
+dem <- merge(
+  rast("data_in/dem/USGS_13_n41w075.tif"),
+  rast("data_in/dem/USGS_13_n41w074.tif"))
+
+plot(dem)
+
+```
+
+::: {.notes }
+USGS - Variety of resolutions. Using 1/3 Arc Second (approximately 10 m x 10 m)
+
+Download in 1 degree x 1 degree increments
+1056 tiles
+
+
+:::

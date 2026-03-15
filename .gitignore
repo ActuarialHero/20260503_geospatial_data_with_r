@@ -6,8 +6,10 @@
 
 /.quarto/
 data_in/census/
+data_in/dem/
 data_in/nlcd/
 data_mid/census/
+data_mid/dem/
 data_mid/nlcd/
 renv/library/
 renv/staging/
