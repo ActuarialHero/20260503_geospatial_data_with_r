@@ -1,7 +1,5 @@
 ## USGS Digital Elevation Map (DEM)
 
-
-
 ```{r Download DEM Rasters}
 #| echo: true
 #| code-fold: true

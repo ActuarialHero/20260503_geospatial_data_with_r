@@ -3,6 +3,4 @@
 
 {{< include /slides/nlcd.qmd >}}
 
-## DEM
-
 {{< include /slides/dem.qmd >}}
