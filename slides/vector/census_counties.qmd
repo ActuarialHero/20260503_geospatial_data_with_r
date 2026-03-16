@@ -1,0 +1,53 @@
+## Counties and County Equivalents
+
+```{r Download Countrywide Counties ()}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Download and read in County Shapefile"
+#| results: "hide"
+
+library(curl)
+
+url <- "https://www2.census.gov/geo/tiger/TIGER2025/COUNTY/tl_2025_us_county.zip"
+dest_in <- "./data_in/census/TIGER2025/COUNTY/tl_2025_us_county.zip"
+dest_mid <- "./data_mid/census/TIGER2025/COUNTY/tl_2025_us_county/tl_2025_us_county.zip"
+
+if(!file.exists(dest_in)) {
+  dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
+  curl_download(url, dest_in)
+  
+  dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
+  unzip(dest_in, exdir = dirname(dest_mid))
+}
+
+# Read Census State Shapefile
+census_county  <- read_sf("./data_mid/census/TIGER2025/COUNTY/tl_2025_us_county/tl_2025_us_county.shp")
+
+```
+
+```{r New York Counties}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Leaflet County Map"
+
+census_county %>%
+  filter(STATEFP == "36") %>%
+  leaflet() %>%
+  addTiles() %>% # Added OpenStreetMap Basemap
+  addPolygons(weight = 0.5, opacity = 1.0)
+```
+
+::: {.notes}
+
+County and county equivalents
+
+The wikipedia page has some good discussion of "County Equivalents" https://en.wikipedia.org/wiki/List_of_United_States_counties_and_county_equivalents
+
+Some companies use county (and equivalent) for territory
+
+From three in Delaware to 254 in Texas.
+
+Radically different sizes. Some of the unorganized territories in Alaska are huge
+
+Zoom in on Manhattan County. Note Cobble Hill across the river
+:::

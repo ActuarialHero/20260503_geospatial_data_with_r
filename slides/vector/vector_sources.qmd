@@ -1,0 +1,18 @@
+# Vector Sources
+
+{{< include /slides/vector/vector_file_types.qmd >}}
+
+{{< include /slides/vector/census_intro.qmd >}}
+
+{{< include /slides/vector/census_states.qmd >}}
+
+{{< include /slides/vector/census_counties.qmd >}}
+
+{{< include /slides/vector/census_tracts.qmd >}}
+
+{{< include /slides/vector/zip_codes.qmd >}}
+
+{{< include /slides/vector/grids.qmd >}}
+
+{{< include /slides/vector/newer_geometries.qmd >}}
+

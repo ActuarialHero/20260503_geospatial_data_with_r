@@ -1,9 +1,0 @@
-## Census Bureau Shapefiles
-
-- States
-- Counties
-- Cities
-- ZIP Codes
-- Tract
-- Block Group
-- Blocks

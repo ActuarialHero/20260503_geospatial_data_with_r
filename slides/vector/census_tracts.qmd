@@ -1,0 +1,42 @@
+## Census Tracts
+
+```{r Download and Read New York Census Tracts}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Download and Read New York Census Tracts"
+#| results: "hide"
+
+library(curl)
+
+url <- "https://www2.census.gov/geo/tiger/TIGER2025/TRACT/tl_2025_36_tract.zip"
+dest_in <- "./data_in/census/TIGER2025/TRACT/tl_2025_36_tract.zip"
+dest_mid <- "./data_mid/census/TIGER2025/TRACT/tl_2025_36_tract/tl_2025_36_tract.zip"
+
+if(!file.exists(dest_in)) {
+  dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
+  curl_download(url, dest_in)
+  
+  dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
+  unzip(dest_in, exdir = dirname(dest_mid))
+}
+
+# Read Census State Shapefile
+census_tracts  <- read_sf("./data_mid/census/TIGER2025/TRACT/tl_2025_36_tract/tl_2025_36_tract.shp")
+
+new_york_county_tracts <- census_tracts %>%
+  filter(STATEFP == "36", COUNTYFP == "061")
+
+leaflet(new_york_county_tracts) %>%
+  addTiles() %>%
+  addPolygons(weight = 0.5, opacity = 1.0)
+
+```
+
+
+  
+::: {.notes}
+- Counties are broken into Census tracts
+- About 85,000 nationally
+- 5,411 in New York
+
+:::
