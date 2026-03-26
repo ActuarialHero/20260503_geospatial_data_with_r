@@ -6,8 +6,6 @@
 #| code-summary: "Download Shapefiles"
 #| results: "hide"
 
-library(curl)
-
 url <- "https://www2.census.gov/geo/tiger/TIGER2025/STATE/tl_2025_us_state.zip"
 dest_in <- "./data_in/census/TIGER2025/STATE/tl_2025_us_state.zip"
 dest_mid <- "./data_mid/census/TIGER2025/STATE/tl_2025_us_state/tl_2025_us_state.zip"
@@ -28,9 +26,6 @@ dest_mid
 #| echo: true
 #| code-fold: true
 #| code-summary: "Read Census Shapefile and display data"
-
-library(sf)
-library(dplyr)
 
 # Read Census State Shapefile
 census_state  <- read_sf("./data_mid/census/TIGER2025/STATE/tl_2025_us_state/tl_2025_us_state.shp")
@@ -63,8 +58,6 @@ State: Since regulatory approval is by state, this is the least granular your te
 #| code-fold: true
 #| code-summary: "Leaflet Code"
 
-library(leaflet)
-
 census_state %>%
   filter(STUSPS == "NY") %>%
   leaflet() %>%
@@ -78,61 +71,9 @@ census_state %>%
 #| code-fold: true
 #| code-summary: "Leaflet Code"
 
-library(leaflet)
-
 census_state %>%
   filter(STUSPS == "NY") %>%
   leaflet() %>%
   addTiles() %>% # Added OpenStreetMap Basemap
   addPolygons(weight = 0.5, opacity = 1.0)
 ```
-
-## Entire State Shapefile
-
-```{r Census State - CW}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Leaflet Code"
-
-library(leaflet)
-
-census_state %>%
-  leaflet() %>%
-  addTiles() %>% # Added OpenStreetMap Basemap
-  addPolygons(weight = 0.5, opacity = 1.0)
-```
-
-
-::: {.notes}
-You'll notice a few things pretty quickly:
-1) The westernmost state in the U.S. is Alaska. The Easternmost State is...also Alaska
-2) We have the territories
-3) Sometimes the borders don't line up well when zoomed out. They look better zooming in
-:::
-
-## Entire State Shapefile
-
-```{r Census State - CW Re-centered}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Leaflet Code"
-
-library(leaflet)
-
-census_state %>%
-  filter(STATEFP <= 56) %>% # Remove territories
-  leaflet() %>%
-  addTiles() %>%
-  addPolygons(weight = 0.5, opacity = 1.0) %>%
-  setView(lng = -103.75, lat = 44.7, zoom = 1) # Center of U.S.
-  
-```
-
-
-::: {.notes}
-We can filter out the territories using our STATEFP code. States and DC are <= 56
-We'll adjust the map so Alaska doesn't wrap around
-leaflet fitBounds(lng1, lat1, lng2, lat2) function Can't handle wrapping around the date line
-:::
-
-

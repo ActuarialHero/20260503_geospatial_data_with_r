@@ -6,8 +6,6 @@
 #| code-summary: "Download NLCD Raster"
 #| results: "hide"
 
-library(curl)
-
 url <- c("https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/current/n41w075/USGS_13_n41w075.tif",
          "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/current/n41w074/USGS_13_n41w074.tif")
 dest_in <- c("./data_in/dem/USGS_13_n41w075.tif","./data_in/dem/USGS_13_n41w074.tif")
@@ -24,9 +22,6 @@ for(i in 1:length(url)){
 #| echo: true
 #| code-fold: true
 #| code-summary: "Merge and display DEM"
-
-library(terra)
-terraOptions(progress=0)
 
 dem <- merge(
   rast("data_in/dem/USGS_13_n41w075.tif"),

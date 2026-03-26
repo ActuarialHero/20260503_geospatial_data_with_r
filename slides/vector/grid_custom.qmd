@@ -1,0 +1,33 @@
+## Custom Grid
+
+```{r Construct a custom grid}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Filter county data set to Manhattan
+manhattan_county_utm <- census_county %>%
+  filter(STATEFP == "36" & COUNTYFP == "061") %>%
+  st_transform(crs = 32618) # This one's in meters
+
+# 3. Create the grid
+# cellsize is in the units of the CRS (meters)
+grid <- st_make_grid(manhattan_county_utm, cellsize = c(100, 100), square = TRUE)
+
+# 4. Convert grid to sf object and crop it to the island's shape
+grid_sf <- st_sf(grid)
+manhattan_custom_grid <- st_intersection(grid_sf, manhattan_county_utm) %>%
+  st_transform(crs = st_crs(census_county)) # Transform back to line up with leaflet
+
+# Plot
+leaflet(manhattan_custom_grid) %>%
+  addTiles() %>%
+  addPolygons(weight = 0.5, opacity = 1.0)
+```
+
+::: {.notes}
+- Construct your own grid use a pre-existing grid (for example, based on decimal degrees or MGRS)
+- Typically don't line up with city, state, county, or ZIP boundaries
+- Or use decimal degrees. For example, truncate longitude and latitude to two decimal places is roughly a 1 km grid
+- Territories get narrower the higher up on the globe you are
+:::

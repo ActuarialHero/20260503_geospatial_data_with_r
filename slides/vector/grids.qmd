@@ -1,7 +1,4 @@
 ## Grids
 
 - MGRS
-
-## Constructing your own
-
-- st_make_grid()
+- Construct your own

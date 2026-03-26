@@ -1,10 +1,28 @@
 ## Tech Stack
 
 - R
-  - renv for the environment
-  - air for code formatting
-- RStudio - IDE from Posit (formerly named RStudio)
-- Positron - VS Code-based IDE from Posit
+- Integrated Development Environments (IDEs)
+  - RStudio - IDE from the company Posit (formerly named RStudio)
+  - Positron - Visual Studio Code-based IDE from Posit
 - Quarto - Presentation + code together
 - GitHub - Source code control
 - GitHub Pages - Publishing the rendered presentation online (automatically!)
+
+## Tech Stack - R Libraries
+
+```{r Import libraries}
+#| echo: true
+#| code-fold: false
+#| code-summary: "Import libraries"
+
+# Geospatial-specific
+library(sf) # For working with vector geospatial data
+library(leaflet) # For interactive maps
+library(terra) # For working with raster geospatial data
+terraOptions(progress = 0) # Turn off progress bars so they don't end up on slides
+
+# Others
+library(curl) # For downloading files
+library(dplyr) # For manipulating data
+
+```

@@ -8,8 +8,6 @@ Giant Raster (pixel) image
 #| code-summary: "Download NLCD Raster"
 #| results: "hide"
 
-library(curl)
-
 url <- "https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/data-bundles/Annual_NLCD_LndCov_2024_CU_C1V1.zip"
 dest_in <- "./data_in/nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.zip"
 dest_mid <- "./data_mid/nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.zip"
@@ -31,12 +29,8 @@ dest_mid
 #| code-fold: true
 #| code-summary: "Show code"
 
-library(terra)
-
 nlcd <- rast("data_mid/nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.tif")
-
 plot(nlcd)
-
 ```
 
 ::: {.notes }
@@ -48,3 +42,30 @@ Depicts the predominant thematic land cover class within the mapping year with r
 105,000 x 160,000
 
 :::
+
+## NLCD in Manhattan
+
+```{r NLCD Raster  trimmed to Manhattan}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+manhattan_county <- census_county %>%
+  filter(GEOID == "36061") %>%
+  st_transform(crs(nlcd))
+
+# Mask = TRUE crops to the boards rather than a rectangle
+nlcd_man <- crop(nlcd, manhattan_county, mask = TRUE)
+```
+
+```{r Plot NLCD for Manhattan}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+leaflet() %>%
+addTiles() %>%
+  addRasterImage(nlcd_man, opacity = 0.8) %>%
+  addRasterLegend(nlcd_man, title = "NLCD Land Cover", opacity = 1)
+```
+

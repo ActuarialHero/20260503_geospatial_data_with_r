@@ -10,9 +10,19 @@
 
 {{< include /slides/vector/census_tracts.qmd >}}
 
+{{< include /slides/vector/census_block_groups.qmd >}}
+
+{{< include /slides/vector/census_blocks.qmd >}}
+
 {{< include /slides/vector/zip_codes.qmd >}}
 
 {{< include /slides/vector/grids.qmd >}}
+
+{{< include /slides/vector/mgrs.qmd >}}
+
+{{< include /slides/vector/grid_custom.qmd >}}
+
+{{< include /slides/vector/grid_long_lat.qmd >}}
 
 {{< include /slides/vector/newer_geometries.qmd >}}
 

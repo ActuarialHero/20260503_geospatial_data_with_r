@@ -6,8 +6,6 @@
 #| code-summary: "Download and read in ZIP Code Tabulation Areas Shapefile"
 #| results: "hide"
 
-library(curl)
-
 url <- "https://www2.census.gov/geo/tiger/TIGER2025/ZCTA520/tl_2025_us_zcta520.zip"
 dest_in <- "./data_in/census/TIGER2025/ZCTA520/tl_2025_us_zcta520.zip"
 dest_mid <- "./data_mid/census/TIGER2025/ZCTA520/tl_2025_us_zcta520/tl_2025_us_zcta520.zip"
@@ -40,32 +38,9 @@ These change rapidly. The methodology is valuable to read: https://www.census.go
 
 :::
 
-## ZIP Codes (ZIP Code Tabulation Areas)
-
-```{r New York State ZIP Codes}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
-
-# Filter to New York (state)
-zcta_ny <- zcta %>%
-  filter(substr(ZCTA5CE20, 1, 2) %in% c("10", "11", "12", "13", "14"))
-
-# Plot on top of Open Street Maps basemap
-leaflet(zcta_ny) %>%
-  addTiles() %>%
-  addPolygons(weight = 0.5, opacity = 1.0)
-```
-
-:::{.notes}
-
-Look at the holes in the map!
-
-:::
-  
 ## ZIP Codes - Manhattan {background-color="#A1D6F4"}
 
-```{r Read ZCTA File}
+```{r Filter and plot Manhattan ZIP Codes}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show code"
@@ -81,6 +56,7 @@ leaflet(zcta_manhattan) %>%
 ```
 
 ::: {.notes}
+Skipping straight to Manhattan since the New York State ZIP Codes added 40 MB to the size of the deck
 
 Manhattan is a nice set of territories here. A couple of notes:
 - UWS side zip codes go across Central Park

@@ -1,0 +1,31 @@
+## Custom Grid
+
+```{r Construct a 0.01 x 0.01 decimal degree grid}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Filter county data set to Manhattan
+manhattan_county_4326 <- census_county %>%
+  filter(STATEFP == "36" & COUNTYFP == "061") %>%
+  st_transform(crs = st_crs(4326)) # This one's in meters
+
+# 3. Create the grid
+# cellsize is in the units of the CRS (meters)
+grid_01 <- st_make_grid(manhattan_county_4326, cellsize = c(0.01, 0.01), square = TRUE)
+
+# 4. Convert grid to sf object and crop it to the island's shape
+grid_01_sf <- st_sf(grid_01)
+manhattan_custom_01_grid <- st_intersection(grid_01_sf, manhattan_county_4326) %>%
+  st_transform(crs = st_crs(census_county)) # Transform back to line up with leaflet
+
+# Plot
+leaflet(manhattan_custom_01_grid) %>%
+  addTiles() %>%
+  addPolygons(weight = 0.5, opacity = 1.0)
+```
+
+::: {.notes}
+- Go by decimal degrees
+- Nice because you can just trucate your coordinates to a certain number of decimals
+:::
