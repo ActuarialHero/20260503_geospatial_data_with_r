@@ -1,4 +1,4 @@
-## Custom Grid
+## Grids - 100 Meter x 100 Meter
 
 ```{r Construct a custom grid}
 #| echo: true

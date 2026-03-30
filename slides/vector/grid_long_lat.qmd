@@ -1,4 +1,4 @@
-## Custom Grid
+## Grids - 0.01 Longitude x 0.01 Latitude
 
 ```{r Construct a 0.01 x 0.01 decimal degree grid}
 #| echo: true
