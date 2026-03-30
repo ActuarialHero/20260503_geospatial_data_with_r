@@ -1,4 +1,4 @@
-## ZIP Codes (ZIP Code Tabulation Areas) {background-color="#A1D6F4"}
+## ZIP Codes (ZIP Code Tabulation Areas)
 
 ```{r Download and read ZIP Code Tabulation Areas}
 #| echo: true
@@ -22,23 +22,6 @@ if(!file.exists(dest_in)) {
 zcta  <- read_sf("./data_mid/census/TIGER2025/ZCTA520/tl_2025_us_zcta520/tl_2025_us_zcta520.shp")
 ```
 
-:::{.notes}
-- People generally know their ZIP code, so that's nice
-
-Any ZIP boundaries are an interpretation of ZIP Codes.
-
-If you buy the ZIP + 4 file from the USPS, you get a table of 43 million records. Not a map.
-https://postalpro.usps.com/address-quality-solutions/zip-4-product
-
-- Cross city, county, and state boundaries
-
-These change rapidly. The methodology is valuable to read: https://www.census.gov/programs-surveys/geography/guidance/geo-areas/zctas.html
-
-- https://about.usps.com/postal-bulletin/2009/pb22262/html/updt_002.htm
-
-:::
-
-## ZIP Codes - Manhattan {background-color="#A1D6F4"}
 
 ```{r Filter and plot Manhattan ZIP Codes}
 #| echo: true
@@ -56,12 +39,39 @@ leaflet(zcta_manhattan) %>%
 ```
 
 ::: {.notes}
+
 Skipping straight to Manhattan since the New York State ZIP Codes added 40 MB to the size of the deck
+
+Plus: People generally know their ZIP code, so that's nice
+
+Minus:
+Any ZIP boundaries are an interpretation of ZIP Codes.
+
+If you buy the ZIP + 4 file from the USPS, you get a table of 43 million records. Not a map.
+https://postalpro.usps.com/address-quality-solutions/zip-4-product
+
+- Cross city, county, and state boundaries
+
+These change rapidly. The methodology is valuable to read: https://www.census.gov/programs-surveys/geography/guidance/geo-areas/zctas.html
+
+- https://about.usps.com/postal-bulletin/2009/pb22262/html/updt_002.htm
 
 Manhattan is a nice set of territories here. A couple of notes:
 - UWS side zip codes go across Central Park
 - Some buildings are their own ZIP code
 - Being surrounded by water helps prevent ZIP codes from spreading to other areas
 - Cobble Hill is missing. It's part of a bigger ZIP code and can't be carved out
-
 :::
+
+## ZIP Codes Pros/Cons
+
+- Pros:
+  - People know their ZIP Code
+- Cons:
+  - Any visual geographic boundary representation is an artistic interpretation of the ZIP + 4 file from the USPS, which is a list of 43 million addresses
+  - They can cross city, county, and state boundaries
+  - While individual address ZIP codes *are* mutually exclusive and exhaustive, territory representations are neither:
+    - ZIP Codes overlap
+    - Some areas with currently no population don't get drawn inside a ZIP Code
+  - There are 40,000+ changes per year. Visual representations like ZCTA don't pick up all the changes immediately
+  - Some ZIP codes only represent a single building
