@@ -1,4 +1,4 @@
-## Slides
+## Slides {background-color="#A1D6F4"}
 
 ![](images/qr_code.png)
 

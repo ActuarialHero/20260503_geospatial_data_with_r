@@ -1,4 +1,4 @@
-## Presenter
+## Presenter {background-color="#A1D6F4"}
 
 ::: columns
 
@@ -23,6 +23,10 @@ New York, NY
   
 ::: {.notes}
 I'm probably the presenter who traveled the least today. This hotel is roughly the midpoint on my walk from my home near Lincoln Center on the Upper West Side to the Arch Office in near Bryant Park.
+
+I work on production implementation of rating algorithms at Arch, but spent much of my career on geospatial data
+
+If you're sitting there wondering "But Arch doesn't do homeowners insurance?" You're correct. That's what made getting legal approval so easy
 
 Previously worked at
 - Two insurance companies: Travelers & Crum and Forster 
