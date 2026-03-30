@@ -6,4 +6,5 @@
 - Keyhole Markup Language (KML, KMZ)
 - Geography Markup Language (GML)
 - GPS eXchange Format (GPX)
+- GeoParquet (.parquet)
 :::
