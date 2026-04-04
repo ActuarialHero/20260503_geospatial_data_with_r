@@ -24,5 +24,9 @@ terraOptions(progress = 0) # Turn off progress bars so they don't end up on slid
 # Others
 library(curl) # For downloading files
 library(dplyr) # For manipulating data
+library(readr) # For reading CSVs
+
+library(DT) # Interface to JavaScript library DataTables
+options(DT.options = list(pageLength = 8))
 
 ```

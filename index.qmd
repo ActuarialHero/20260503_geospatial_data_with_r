@@ -9,4 +9,6 @@ author: "Kevin McBeth, FCAS, MAAA"
 
 {{< include slides/raster/raster_sources.qmd >}}
 
+{{< include slides/features/features.qmd >}}
+
 {{< include slides/location_data.qmd >}}

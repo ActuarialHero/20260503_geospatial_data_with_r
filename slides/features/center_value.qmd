@@ -1,0 +1,41 @@
+## Center Value
+
+- Fast way of assigning **something** to each territory
+- A single point may or may not be representative of the entire territory
+- Using the centroid here, but internal point may be better
+
+```{r Centroid Lookup}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Transform CRS to match NLCD
+new_york_county_tracts_nlcd_crs <- st_transform(new_york_county_tracts, crs(nlcd))
+
+# Calculate the centroids of the tracts
+centroids <- st_centroid(new_york_county_tracts_nlcd_crs)
+
+# Extract values at centroids
+centroid_values <- extract(nlcd, centroids, layer = 1)
+
+# Read in land cover descriptions
+nlcd_descriptions <- read_csv("data_in/nlcd/nlcd_classes.csv")
+
+# Bind data
+centroid_values <- centroids %>%
+  st_drop_geometry() %>% # Removes the geometry so we get a datatable
+  bind_cols(centroid_values) %>%
+  dplyr::select(GEOID, land_cover_code = value) %>%
+  left_join(nlcd_descriptions) %>%
+  arrange(GEOID, land_cover_code)
+```
+
+## Centroid Data Table {background-color="#A1D6F4"}
+
+```{r Centroid Table}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+datatable(centroid_values, rownames = FALSE)
+```
