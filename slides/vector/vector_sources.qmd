@@ -22,5 +22,7 @@
 
 {{< include /slides/vector/grid_long_lat.qmd >}}
 
+{{< include /slides/vector/shape_counts.qmd >}}
+
 {{< include /slides/vector/newer_geometries.qmd >}}
 

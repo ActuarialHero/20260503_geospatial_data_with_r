@@ -1,0 +1,34 @@
+
+## Masked vs. Buffered {background-color="#A1D6F4"}
+
+```{r Buffered vs. Percent}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# full_join data sets
+masked_vs_buffered_percent <- masked_percent %>%
+  full_join(buffered_percent, by = c("GEOID", "land_cover"), suffix = c("_mask", "_buff")) %>%
+  rename_with(~ gsub("percent", "pct", .x), contains("percent")) %>%
+  rename_with(~ gsub("count", "cnt", .x), contains("count"))
+
+datatable(masked_vs_buffered_percent, rownames = FALSE) %>%
+  formatPercentage('pct_mask', digits = 1) %>%
+  formatPercentage('pct_buff', digits = 1)
+```
+
+## Masked vs. Buffered - NAs {background-color="#A1D6F4"}
+
+```{r Buffered vs. Percent - NAs}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Filter to nulls
+masked_vs_buffered_percent_null <- masked_vs_buffered_percent %>%
+  filter(is.na(cnt_mask) | is.na(cnt_buff))
+
+datatable(masked_vs_buffered_percent_null, rownames = FALSE) %>%
+  formatPercentage('pct_mask', digits = 1) %>%
+  formatPercentage('pct_buff', digits = 1)
+```

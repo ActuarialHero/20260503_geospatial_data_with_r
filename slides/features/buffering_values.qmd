@@ -1,0 +1,96 @@
+## Buffering {background-color="#A1D6F4"}
+
+- Draw a square or circular buffer around each centroid
+- More consistent number of data elements
+- May fall short or go beyond the edges of the shape
+- Edges of the data set become problematic
+- This example uses circles
+
+## Buffering Example {background-color="#A1D6F4"}
+
+```{r Buffering example}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Create buffers
+buffers <- st_buffer(centroids, dist = 1000)  # 1 km buffer
+
+# Loop through ZIPs
+for (i in 1:nrow(buffers)) {
+#for (i in 1:1) {
+  if(i == 1) {
+    all_data <- NULL
+  } 
+
+  selected_buffer <- buffers[i,]
+  selected_GEOID <- buffers$GEOID[i]
+  
+  # Crop and mask
+  cropped_raster <- crop(nlcd, ext(selected_buffer)) # Cropping first makes this faster
+  masked_raster <- mask(cropped_raster, selected_buffer)
+
+  # Calculate frequencies
+  all_data[[i]] <- data.frame(cbind(GEOID = selected_GEOID, freq(masked_raster, bylayer = FALSE)))
+}
+
+# Build the complete data set
+buffered_freq <- bind_rows(all_data) %>%
+  mutate(count = as.numeric(count)) %>%
+  rename(land_cover = value) %>%
+  arrange(GEOID, land_cover)
+
+# Example
+
+selected_geoid <- "36061013100"
+selected_buffer <- filter(buffers, GEOID == selected_geoid)
+
+cropped_raster <- crop(nlcd, ext(selected_buffer)) # Cropping first makes this faster
+masked_raster <- mask(cropped_raster, selected_buffer)
+
+plot(cropped_raster)
+plot(selected_buffer, col = NA,  add = TRUE, title = selected_geoid)
+```
+
+## Buffered Output Table {background-color="#A1D6F4"}
+
+```{r Buffered Table}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+datatable(buffered_freq, rownames = FALSE)
+```
+
+## Buffered Predominant Land Cover {background-color="#A1D6F4"}
+
+```{r Buffered Predominant Land Cover}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Predominant land cover
+buffered_predominant <- buffered_freq %>%
+  group_by(GEOID) %>%
+  arrange(GEOID, desc(count)) %>%
+  top_n(1)
+
+datatable(buffered_predominant, rownames = FALSE)
+```
+
+## Buffered Percent Land Cover {background-color="#A1D6F4"}
+
+```{r Buffered Percent Land Cover}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Percent of ZIP for each land cover
+buffered_percent <- buffered_freq %>%
+  group_by(GEOID) %>%
+  mutate(percent = count / sum(count)) %>%
+  arrange(GEOID, land_cover)
+
+datatable(buffered_percent, rownames = FALSE) %>%
+  formatPercentage('percent', digits = 1)
+```

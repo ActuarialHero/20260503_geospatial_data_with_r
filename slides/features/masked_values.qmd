@@ -1,0 +1,100 @@
+## Overlap {background-color="#A1D6F4"}
+
+- Mask the raster with the shapes and summarize the data that fall within each shape
+
+- Amount of data depends on the size of the territory
+- Small territories have less data than large ones
+
+``` {r Masking example}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Example
+selected_shape <- "36061013100" # Sheraton New York Times Square Hotel Census Tract
+tract <- filter(new_york_county_tracts_nlcd_crs, GEOID == selected_shape)
+
+cropped_raster <- crop(nlcd, ext(tract)) # Cropping first makes this faster
+masked_raster <- mask(cropped_raster, tract)
+
+plot(masked_raster)
+plot(tract, add = TRUE, col = NA, title = selected_shape)
+```
+Then compute whatever static you want to try: min, median, average, max, predominant
+
+## Masked Output Table {background-color="#A1D6F4"}
+
+```{r Masked Output Table}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+for (i in 1:nrow(new_york_county_tracts_nlcd_crs)) {
+  if(i == 1) {
+    all_data <- NULL
+  } 
+
+  shape <- new_york_county_tracts_nlcd_crs[i,]
+  GEOID <- new_york_county_tracts_nlcd_crs$GEOID[i]
+  
+  cropped_raster <- crop(nlcd, ext(shape)) # Cropping first makes this faster
+  masked_raster <- mask(cropped_raster, shape)
+
+  all_data[[i]] <- data.frame(cbind(GEOID = GEOID, freq(masked_raster, bylayer = FALSE)))
+}
+
+masked_freq <- bind_rows(all_data) %>%
+  mutate(count = as.numeric(count)) %>%
+  rename(land_cover = value) %>%
+  arrange(GEOID, land_cover)
+
+
+datatable(masked_freq, rownames = FALSE)
+```
+
+## Masked Pecent Land Cover {background-color="#A1D6F4"}
+
+```{r Masked Percent Land Cover}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Percent of ZIP for each land cover
+masked_percent <- masked_freq %>%
+  group_by(GEOID) %>%
+  mutate(percent = count / sum(count)) %>%
+  arrange(GEOID, land_cover)
+
+datatable(masked_percent, rownames = FALSE) %>%
+  formatPercentage('percent', digits = 1)
+```
+
+::: {.notes}
+Would probably transpose this so the different land covers are columns
+Might set indictor variables with thresholds, like this land cover exists or it's more than x% this land cover
+:::
+
+## Masked Predominant Land Cover {background-color="#A1D6F4"}
+
+```{r Masked Predominant Land Cover}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Predominant land cover
+masked_predominant <- masked_freq %>%
+  group_by(GEOID) %>%
+  arrange(GEOID, desc(count)) %>%
+  top_n(1) # Grabs the most common / predominant cover
+
+datatable(masked_predominant, rownames = FALSE)
+```
+
+:::{.notes}
+
+Hotel:
+State: 36
+County: 061
+Tract: 36061013100
+Block: 360610131002001
+:::

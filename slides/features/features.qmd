@@ -1,3 +1,9 @@
 # Feature Engineering
 
 {{< include /slides/features/center_value.qmd >}}
+
+{{< include /slides/features/masked_values.qmd >}}
+
+{{< include /slides/features/buffering_values.qmd >}}
+
+{{< include /slides/features/masked_vs_buffering.qmd >}}

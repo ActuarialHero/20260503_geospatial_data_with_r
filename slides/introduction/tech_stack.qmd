@@ -27,6 +27,6 @@ library(dplyr) # For manipulating data
 library(readr) # For reading CSVs
 
 library(DT) # Interface to JavaScript library DataTables
-options(DT.options = list(pageLength = 8))
+options(DT.options = list(pageLength = 8, ordering = FALSE))
 
 ```

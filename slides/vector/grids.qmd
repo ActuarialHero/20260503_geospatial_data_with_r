@@ -1,4 +1,4 @@
-## Grids & Newer Geometries
+## Grids
 
 - Grids are simpler
 - Pre-existing grids:
@@ -6,7 +6,6 @@
 - Construct your own. Two examples:
   - 100 M x 100 M example
   - 0.01 Longitude x 0.01 Latitude 
-- Newer Geometries
 
 ::: {.notes}
 - State Farm uses a longitude / latitude grid. Virginia example: SFMA-131879778

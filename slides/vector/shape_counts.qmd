@@ -1,0 +1,20 @@
+## Shape Counts {background-color="#A1D6F4"}
+
+```{r Count of Manhattan-ish Shapes}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+manhattan_territory_counts <- data.frame(
+  type = c("ZIP Code Tabulation Areas", "Census Tracts", "Census Block Groups", "Census Blocks", "Grid: 0.01 x 0.01", "Grid: 100 m x 100 m"),
+  count = c(
+    nrow(zcta_manhattan),
+    nrow(new_york_county_tracts),
+    nrow(new_york_county_bg),
+    nrow(new_york_county_blocks),
+    nrow(manhattan_custom_01_grid),
+    nrow(manhattan_custom_grid)))
+
+datatable(manhattan_territory_counts, rownames = FALSE) %>%
+  formatRound('count', digits = 0, mark = ",")
+```
