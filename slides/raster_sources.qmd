@@ -1,6 +1,0 @@
-# Raster Data Sources
-(Slightly Bended Pictures)
-
-{{< include /slides/nlcd.qmd >}}
-
-{{< include /slides/dem.qmd >}}

@@ -3,7 +3,7 @@
 - Grids are simpler
 - Pre-existing grids:
   - 1 km x 1 km Military Grid Reference System (MGRS)
-- Construct your own. Two examples
+- Construct your own. Two examples:
   - 100 M x 100 M example
   - 0.01 Longitude x 0.01 Latitude 
 - Newer Geometries
