@@ -16,17 +16,45 @@
 #| code-summary: "Import libraries"
 
 # Geospatial-specific
-library(sf) # For working with vector geospatial data
-library(leaflet) # For interactive maps
-library(terra) # For working with raster geospatial data
+library(sf) # For working with vector geospatial data. Replaced rgdal and rgeos
+library(terra) # For working with raster geospatial data. Replaced raster
 terraOptions(progress = 0) # Turn off progress bars so they don't end up on slides
+library(leaflet) # For interactive maps
 
 # Others
+
 library(curl) # For downloading files
-library(dplyr) # For manipulating data
 library(readr) # For reading CSVs
+library(dplyr) # For manipulating data
 
-library(DT) # Interface to JavaScript library DataTables
+# Interface to JavaScript library DataTables
+library(DT)
 options(DT.options = list(pageLength = 8, ordering = FALSE))
+```
 
+## Tech Stack - Download Helper Function
+
+Function to help download files if they don't exist
+
+```{r Download Helper}
+#| echo: true
+#| code-fold: false
+#| code-summary: "Download Helper"
+
+download_data <- function(url, relative_dir) {
+  
+  filename <- basename(url)
+  dest_in <- paste("./data_in", relative_dir, filename, sep = "/")
+  dest_mid <- paste("./data_mid", relative_dir, filename, sep = "/")
+  
+  if(!file.exists(dest_in)) {
+    dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
+    curl_download(url, dest_in)
+    
+    dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
+    unzip(dest_in, exdir = dirname(dest_mid))
+  }
+  
+  dest_mid
+}
 ```

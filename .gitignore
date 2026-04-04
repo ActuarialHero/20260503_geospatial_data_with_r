@@ -9,10 +9,12 @@ data_in/census/
 data_in/dem/
 data_in/nlcd/
 data_in/nga/
+data_in/ssurgo/
 data_mid/census/
 data_mid/dem/
 data_mid/nlcd/
 data_mid/nga/
+data_mid/ssurgo/
 renv/library/
 renv/staging/
 **/*.quarto_ipynb

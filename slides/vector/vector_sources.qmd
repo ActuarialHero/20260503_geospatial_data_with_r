@@ -28,3 +28,4 @@
 
 {{< include /slides/vector/newer_geometries.qmd >}}
 
+{{< include /slides/vector/ssurgo.qmd >}}

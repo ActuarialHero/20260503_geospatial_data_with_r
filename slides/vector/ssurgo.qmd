@@ -1,0 +1,112 @@
+## SSURGO
+
+:::{.incremental} 
+
+- Download **by county** from https://websoilsurvey.nrcs.usda.gov/app/WebSoilSurvey.aspx
+- Shapefile with an ID
+- Separate text files contain the data
+  - [Documentation](https://www.nrcs.usda.gov/resources/data-and-reports/soil-survey-geographic-database-ssurgo)
+- Sample variables 
+  - Drainage classification 
+  - Available water storage (varying depths)
+  - Bedrock Depth
+  - Ponding Frequency
+:::
+
+::: {.notes }
+
+SERFF: FAIG-134593537, MUOF-134283674, AMMH-134210246
+
+:::
+
+## SSURGO - Manhattan - Available Water Storage to 50 CM
+
+```{r Download Soil Survey Data & Setup Names}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Download Soil Survey Data & Create Names"
+#| results: "hide"
+
+download_data(
+  url = "https://websoilsurvey.sc.egov.usda.gov/DSD/Download/Cache/SSA/wss_SSA_NY061_soildb_US_2003_[2025-08-28].zip",
+  relative_dir = "ssurgo")
+
+muaggatt_names <- c(
+  "musym",
+  "muname",
+  "mustatus",
+  "slopegraddcp",
+  "slopegradwta",
+  "brockdepmin",
+  "wtdepannmin",
+  "wtdepaprjunmin",
+  "flodfreqdcd",
+  "flodfreqmax",
+  "pondfreqprs",
+  "aws025wta",
+  "aws050wta",
+  "aws0100wta",
+  "aws0150wta",
+  "drclassdcd",
+  "drclasswettest",
+  "hydgrpdcd",
+  "iccdcd",
+  "iccdcdpct",
+  "niccdcd",
+  "niccdcdpct",
+  "engdwobdcd",
+  "engdwbdcd",
+  "engdwbll",
+  "engdwbml",
+  "engstafdcd",
+  "engstafll",
+  "engstafml",
+  "engsldcd",
+  "engsldcp",
+  "englrsdcd",
+  "engcmssdcd",
+  "engcmssmp",
+  "urbrecptdcd",
+  "urbrecptwta",
+  "forpehrtdcp",
+  "hydclprs",
+  "awmmfpwwta",
+  "mukey")
+
+muaggatt_types <- c("cclnnnnnccnnnnnccclnnncccccccccccccncnnc")
+```
+
+```{r Manhattan SSURGO}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+
+# Read muaggatt data file for New York County
+muaggatt <- read_delim(
+  "data_mid/ssurgo/NY061/tabular/muaggatt.txt", delim = "|",
+  col_names = muaggatt_names,
+  col_types = muaggatt_types)
+
+# Read shapefile for New York, NY county
+ssurgo <- read_sf("data_mid/ssurgo/NY061/spatial/soilmu_a_ny061.shp") %>%
+  left_join(muaggatt, c ("MUKEY" = "mukey"))
+
+# Define color palate - these are always annoying
+aws_pal <- colorBin("Blues", ssurgo$aws050wta, 5, pretty = FALSE)
+
+# Create available water storage plot plot
+leaflet(ssurgo) %>%
+  addPolygons(weight = 0.5,
+              opacity = 1.0, fillOpacity = 1.0,
+              fillColor = ~aws_pal(aws050wta)) %>%
+  addLegend(
+    pal = aws_pal,
+    values = ~aws050wta,
+    position = "bottomright",
+  title = "Available Water Storage to a Depth of 50 CM")
+```
+
+:::{.notes }
+"Available water storage or available water capacity (AWC) refers to the quantity of water that the soil is capable of storing for use by plants. The capacity for water storage is given in centimeters of water per centimeter of soil for each soil layer"
+:::
