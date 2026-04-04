@@ -4,9 +4,10 @@ project:
   output-dir: docs
 format:
   revealjs:
-    theme: simple
+    theme: [simple, styles.scss]
     fontsize: 1.5em # 16px is standard, so this is 24 > 22 CAS minimum
-    # embed-resources: true
+    slide-number: true
+    embed-resources: true
 editor: 
   mode: source
   

@@ -1,4 +1,4 @@
-## Presenter {background-color="#A1D6F4"}
+## Presenter
 
 ::: columns
 

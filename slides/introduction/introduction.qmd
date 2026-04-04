@@ -1,4 +1,4 @@
-# Introduction {background-color="#A1D6F4"}
+# Introduction
 
 {{< include /slides/introduction/presenter.qmd >}}
 

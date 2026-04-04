@@ -1,0 +1,22 @@
+# Geospatial Data Types
+
+## Two Data Types
+
+::: {.fragment}
+### Vector Data
+Vector data represents the world using precise mathematical points, lines, and polygons. It is ideal for discrete objects with defined boundaries.
+
+- Points: Specific XY coordinate locations (e.g., city landmarks, utility poles, or GPS waypoints).
+- Lines: Connected points that represent linear features (e.g., roads, rivers, or flight paths).
+- Polygons: Enclosed areas representing regions (e.g., property parcels, city limits, or lake boundaries).
+:::
+
+::: {.fragment}
+### Raster Data
+
+Raster data represents the world as a continuous surface divided into a grid of cells (pixels). Each cell contains a value representing information for that specific area.
+
+- Grid Structure: Data is organized into rows and columns of equal-sized pixels.
+- Continuous Values: Best for phenomena that change gradually over space (e.g., elevation, temperature, or satellite imagery).
+- Resolution: The detail of the data depends on the pixel size; smaller pixels provide higher spatial resolution.
+:::

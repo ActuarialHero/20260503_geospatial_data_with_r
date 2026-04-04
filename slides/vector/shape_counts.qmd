@@ -1,4 +1,4 @@
-## Shape Counts {background-color="#A1D6F4"}
+## Shape Counts
 
 ```{r Count of Manhattan-ish Shapes}
 #| echo: true

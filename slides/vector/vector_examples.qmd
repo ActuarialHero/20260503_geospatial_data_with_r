@@ -1,0 +1,15 @@
+## Example Sources of Vector Data
+
+
+- Census Bureau Boundary Shapefiles
+- Longitude/Latitude Grids
+- Any other territory boundary
+- Soils Survey Geographic Database (USDA SSURGO)
+- National Hurricane Center Hurricane Paths
+- NOAA Severe Weather Data Inventory
+
+::: {.notes}
+More examples than we can cover today.
+
+We'll focus on the Census Bureau, Grids, and Soil Survey Data
+:::

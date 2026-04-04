@@ -1,9 +1,19 @@
-## Slides {background-color="#A1D6F4"}
+## Slides
 
-![](images/qr_code.png)
+::: columns
+::: {.column width="50%"}
+Slides on GitHub Pages:
 
-https://actuarialhero.github.io/20260503_geospatial_data_with_r
+![](images/qr_code_slides.png)
+:::
 
+::: {.column width="50%"}
+
+Source code on GitHub:
+
+![](images/qr_code_source.png)
+:::
+:::
 
 ::: {.notes}
 

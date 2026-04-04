@@ -6,10 +6,9 @@
 - Vector Data Sources
 - Raster Data Sources
 - Constructing Features
+- Location-specific Data
 - Modeling the Cost of Home Insurance
 - Example Territory Maps
-- Geocoding
-- Location-specific Data
 - Considerations
 - Conclusion
 :::

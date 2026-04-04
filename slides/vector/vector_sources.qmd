@@ -2,6 +2,8 @@
 
 {{< include /slides/vector/vector_file_types.qmd >}}
 
+{{< include /slides/vector/vector_examples.qmd >}}
+
 {{< include /slides/vector/census_intro.qmd >}}
 
 {{< include /slides/vector/census_states.qmd >}}
