@@ -15,4 +15,6 @@ author: "Kevin McBeth, FCAS, MAAA"
 
 {{< include slides/location/location_data.qmd >}}
 
+{{< include slides/modeling/modeling.qmd >}}
+
 {{< include slides/examples/example_maps.qmd >}}

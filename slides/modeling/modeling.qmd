@@ -1,0 +1,57 @@
+# Modeling the Cost of Home Insurance
+
+- Pure Premium vs. Frequency / Severity
+- By-peril vs. All Perils
+- Modeling & Holdout Data Sets
+
+::: {.notes}
+
+Variables predictive for one peril may not be predictive for others.
+You need good peril classification of data
+Storms can cause multiple claims, leading to correlations across policies in the data set.
+
+:::
+
+## Models May Vary by State
+
+::: {.incremental}
+
+- Some state regulators don't like specific variables
+- Some regulatory require revealing more information about your model
+- Regions may vary
+  - D.C. is a single territory
+  - Hawaii territories are by county (island-ish)
+  - Minnesota territories are by city
+- Data availability
+  - Some of the data sets aren't available in Alaska and/or Hawaii
+  - The data is available, but different for a specific state
+- Cost/benefit for some regions, like Alaska
+  - Alaska is huge and requires a ton of processing power
+  - Alaska wraps around to the Eastern Hemisphere, so extra edge cases
+
+:::
+
+## Modeling Process
+
+![](images/xkcd_1838.png)
+
+alt-text: The pile gets soaked with data and starts to get mushy over time, so it's technically recurrent.
+
+[Machine Learning xkcd 1838](https://xkcd.com/1838/)
+
+
+:::{.notes }
+
+Unfortunately, I don't have a public data set to build a model, so you'll have to stir your pile of linear algebra in your head
+
+:::
+
+## Implementation Notes
+
+:::{.incremental}
+
+- Territory Tables are pre-scored and static
+- May need to update the filing for re-scoring.
+- Model version used based on policy effective date
+
+:::

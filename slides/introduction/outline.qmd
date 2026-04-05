@@ -7,7 +7,7 @@
 - Raster Data Sources
 - Constructing Features
 - Location-specific Data
-- Modeling the Cost of Home Insurance
+- Modeling
 - Example Territory Maps
 - Considerations
 - Conclusion
