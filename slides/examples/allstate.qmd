@@ -4,20 +4,15 @@ Allstate Vehicle and Property Insurance Company (37907)
 
 ZIP Code-based territories
 
-12 perils:
-
-- Fire 1
-- Fire 2
-- Brush Fire
-- Water Weather
-- Water Non-weather
-- Wind
-- Hail
-- Lightning
-- Theft
-- Liability
-- Hurricane
-- Other
++-----------------------------------------------------------+
+| [**Perils**]{style="display: block; text-align: center;"} |                                                 |
++------------+-------------------+-----------+--------------+
+| Fire 1     | Water Weather     | Wind      | Theft        |
++------------+-------------------+-----------+--------------+
+| Fire 2     | Water Non-weather | Hail      | Liability    |
++------------+-------------------+-----------+--------------+
+| Brush Fire | Hurricane         | Lightning | Other        |
++------------+-------------------+-----------+--------------+
 
 ::: {.notes}
 Their eSurance company in Nevada uses 0.05, 0.1, 0.2, 0.4 grid  SERFF ESUR-129867328 Page 920
@@ -39,6 +34,116 @@ allstate_ny <- read_csv("./references_private/allstate_factors.csv",
 
 # Join factors to ZIP shapefile
 zip_allstate_ny <- zcta %>%
+  # Simplify the shape so the deck doesn't exceed the 100 MB limit of GitHub
+  st_simplify(preserveTopology = TRUE, dTolerance = 5) %>%
   inner_join(allstate_ny, by = c("ZCTA5CE20" = "zip"))
 ```
 
+## Allstate - Weather Water
+
+```{r Allstate NY Weather Water}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Set up a color palette
+pal <- colorBin(
+  palette = c("#4575b4", "#91bfdb","#e0f3f8","#fee090","#fc8d59","#d73027"),
+  domain = zip_allstate_ny$water_weather,
+  bins = c(0.6, 0.8, 1.0, 1.20, 1.4, 1.6, 1.8),
+  na.color = "transparent"
+)
+
+# Plot on top of Open Street Maps basemap
+leaflet(zip_allstate_ny) %>%
+  addTiles() %>%
+  addPolygons(
+    fillColor = ~pal(water_weather),
+    color = "white",
+    weight = 1.0,
+    fillOpacity = 0.7) %>%
+  addLegend(pal = pal, values = ~water_weather, title = "Weather Water")
+```
+
+## Allstate - Wind
+
+```{r Allstate NY Wind}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+
+# Set up a color palette
+pal <- colorBin(
+  palette = c("#4575b4", "#91bfdb","#e0f3f8","#fee090","#fc8d59","#d73027"),
+  domain = zip_allstate_ny$wind,
+  bins = c(0.6, 0.8, 1.0, 1.20, 1.4, 1.6, 1.8),
+  na.color = "transparent"
+)
+
+# Plot on top of Open Street Maps basemap
+leaflet(zip_allstate_ny) %>%
+  addTiles() %>%
+  addPolygons(
+    fillColor = ~pal(wind),
+    color = "white",
+    weight = 1.0,
+    fillOpacity = 0.7) %>%
+  addLegend(pal = pal, values = ~wind, title = "Wind")
+```
+
+
+
+## Allstate - Theft
+
+```{r Allstate NY Theft}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+
+# Set up a color palette
+pal <- colorBin(
+  palette = c("#4575b4", "#91bfdb","#e0f3f8","#fee090","#fc8d59","#d73027"),
+  domain = zip_allstate_ny$theft,
+  bins = c(0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.00),
+  na.color = "transparent"
+)
+
+# Plot on top of Open Street Maps basemap
+leaflet(zip_allstate_ny) %>%
+  addTiles() %>%
+  addPolygons(
+    fillColor = ~pal(theft),
+    color = "white",
+    weight = 1.0,
+    fillOpacity = 0.7) %>%
+  addLegend(pal = pal, values = ~theft, title = "Hurricane Factor")
+```
+
+
+## Allstate - Hurricane
+
+```{r Allstate NY hurricane factors}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+# Set up a color palette
+pal <- colorBin(
+  palette = c("#4575b4", "#91bfdb","#e0f3f8","#ffffbf","#fee090","#fc8d59","#d73027"),
+  domain = zip_allstate_ny$hurricane,
+  bins = c(0, 0.5, 1.5, 2.5, 4.0, 5.0, 6.0, 7.5, 10.0),
+  na.color = "transparent"
+)
+
+# Plot on top of Open Street Maps basemap
+leaflet(zip_allstate_ny) %>%
+  addTiles() %>%
+  addPolygons(
+    fillColor = ~pal(hurricane),
+    color = "white",
+    weight = 1.0,
+    fillOpacity = 0.7) %>%
+  addLegend(pal = pal, values = ~hurricane, title = "Hurricane Factor")
+```
