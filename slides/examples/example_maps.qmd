@@ -1,7 +1,9 @@
 # Example Territory Maps
 
-A review of the 3 largest New York Home Insurance Companies
+A review of the three largest New York Home Insurance Companies
 
 {{< include /slides/examples/chubb.qmd >}}
+
+{{< include /slides/examples/allstate.qmd >}}
 
 {{< include /slides/examples/state_farm.qmd >}}
