@@ -46,12 +46,3 @@ Unfortunately, I don't have a public data set to build a model, so you'll have t
 
 :::
 
-## Implementation Notes
-
-:::{.incremental}
-
-- Territory Tables are pre-scored and static
-- May need to update the filing for re-scoring.
-- Model version used based on policy effective date
-
-:::

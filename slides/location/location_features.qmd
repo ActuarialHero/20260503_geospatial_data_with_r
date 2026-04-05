@@ -1,0 +1,12 @@
+## Location-specific features {background-color="#A1D6F4"}
+
+- Direct assignment of values to specific properties
+- Distance to Coast
+- Distance to Water (lakes, rivers, etc.)
+- Flood zone determination
+- Roof Geometry & area
+- Roof Damage
+- Tree Overhang
+- Attractive Nuisances
+  - Swimming Pools
+  - Trampolines

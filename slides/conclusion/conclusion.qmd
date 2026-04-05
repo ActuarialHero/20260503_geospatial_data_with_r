@@ -1,0 +1,40 @@
+# Conclusion
+
+## Implementation Considerations
+
+:::{.incremental}
+
+- Territory Tables are pre-scored and static
+- May need to update the filing for re-scoring
+- Model version used based on policy effective date
+- The more complicated they get, the harder the implementation gets
+
+:::
+
+## Conclusion
+
+::: {.incremental}
+- Tech Stack
+- Types of Geospatial Data
+- Vector Data Sources
+- Raster Data Sources
+- Constructing Features
+- Location-specific Data
+- Modeling
+- Example Territory Maps
+- Conclusion
+:::
+
+## Questions
+
+- Tech Stack
+- Types of Geospatial Data
+- Vector Data Sources
+- Raster Data Sources
+- Constructing Features
+- Location-specific Data
+- Modeling
+- Example Territory Maps
+- Conclusion
+
+{{< include /slides/conclusion/learn_more.qmd >}}

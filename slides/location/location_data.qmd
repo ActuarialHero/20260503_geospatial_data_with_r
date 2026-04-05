@@ -1,3 +1,5 @@
 # Location-specific Data
 
 {{< include /slides/location/geocoding.qmd >}}
+
+{{< include /slides/location/location_features.qmd >}}

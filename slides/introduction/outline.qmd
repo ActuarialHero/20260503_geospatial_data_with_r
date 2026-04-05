@@ -9,7 +9,6 @@
 - Location-specific Data
 - Modeling
 - Example Territory Maps
-- Considerations
 - Conclusion
 :::
 

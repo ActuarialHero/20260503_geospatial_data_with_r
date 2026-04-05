@@ -18,3 +18,5 @@ author: "Kevin McBeth, FCAS, MAAA"
 {{< include slides/modeling/modeling.qmd >}}
 
 {{< include slides/examples/example_maps.qmd >}}
+
+{{< include slides/conclusion/conclusion.qmd >}}
