@@ -1,4 +1,4 @@
-## No 2: Allstate Insurance Group
+## No. 2: Allstate
 
 Allstate Vehicle and Property Insurance Company (37907)
 
@@ -35,7 +35,7 @@ allstate_ny <- read_csv("./references_private/allstate_factors.csv",
 # Join factors to ZIP shapefile
 zip_allstate_ny <- zcta %>%
   # Simplify the shape so the deck doesn't exceed the 100 MB limit of GitHub
-  st_simplify(preserveTopology = TRUE, dTolerance = 5) %>%
+  st_simplify(preserveTopology = TRUE, dTolerance = 50) %>%
   inner_join(allstate_ny, by = c("ZCTA5CE20" = "zip"))
 ```
 

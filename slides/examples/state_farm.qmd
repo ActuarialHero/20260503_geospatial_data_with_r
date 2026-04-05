@@ -1,6 +1,4 @@
-## State Farm Group (176)
-
-State Farm Group (176)
+## No. 1: State Farm
 
 State Farm Fire And Casualty Company (25143)
 
@@ -18,7 +16,7 @@ Extracted using Tabula
 Excel get data from PDF also works well
 :::
 
-## State Farm Fire And Casualty Company (25143) - Non-Hurricane Factors
+## State Farm - Non-Hurricane Factors
 
 ```{r New York State}
 #| echo: true
@@ -51,7 +49,7 @@ leaflet() %>%
   addLegend(pal = pal, values = values(nonhurr_ny), title = "Non-Hurricane Factor")
 ```
 
-## State Farm Fire And Casualty Company (25143) - Hurricane Factors
+## State Farm - Hurricane Factors
 
 ```{r State Farm NY hurricane factors}
 #| echo: true
