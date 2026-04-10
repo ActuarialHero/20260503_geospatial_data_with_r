@@ -9,5 +9,5 @@
 ::: {.notes}
 Obligatory antitrust notice.
 
-Pause for a few seconds.
+Pause for 30 seconds
 :::

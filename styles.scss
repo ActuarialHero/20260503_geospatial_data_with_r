@@ -1,9 +1,24 @@
 /*-- scss:defaults --*/
 $body-bg: #d7edf4;
 
+// This is the specific variable Quarto uses for code blocks
+$code-font-size: 1.4em; 
+
+
 /*-- scss:rules --*/
 
 /* Increase slide number size */
 .slide-number {
   font-size: 1.5rem !important;
+}
+
+.reveal .fragment.highlight-burnt-red {
+  // This defines the color BEFORE it is clicked (usually matches the rest of the text)
+  opacity: 1; 
+  
+  &.visible.current-fragment {
+    // This defines the color when it is the ACTIVE highlight
+    color: #d35400; // Your custom hex code
+    transition: color 0.3s ease; // Smooth color transition
+  }
 }

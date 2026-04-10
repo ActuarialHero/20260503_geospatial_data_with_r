@@ -1,10 +1,10 @@
 ## Additional Disclaimers
 
-- Some references to vendors. This is neither a comprehensive list nor an endorsement of specific vendors
-
 - The views and opinions expressed in this presentation are my own and do not necessarily reflect those of my current or former employers. The views are my own understanding and interpretation of publicly available filings.
 
-- I am not an attorney. Comments about state statutes should not be treated as legal advice.
+- I am not an attorney. Comments about statutes & laws should not be treated as legal advice.
+
+- Some references to vendors. This is neither a comprehensive list nor an endorsement of specific vendors
 
 - Artistic interpretation of data contained in filings.
 

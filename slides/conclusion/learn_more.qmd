@@ -1,28 +1,4 @@
-# Learn More
-
-## High-level Resources
-
--   [Insurance Information Institute](https://www.iii.org/)
--   [The Institutes](https://web.theinstitutes.org/)
--   [Casualty Actuarial Society](https://www.casact.org/)
--   [Society of Actuaries](https://www.soa.org/)
--   [SERFF: System for Electronic Rates & Forms Filings](https://www.serff.com/)
--   [Be An Actuary](https://www.beanactuary.org/)
--   [National Association of Insurance Commissioners](https://content.naic.org/)
--   [Wikipedia: State-Based Insurance Regulation](https://en.wikipedia.org/wiki/Insurance_regulatory_law#State-based_insurance_regulation)
-
-## Semi-technical Resources
-
--   [An Actuarial Review of Homeowners By Peril Rating](https://ar.casact.org/an-actuarial-review-of-homeowners-by-peril-rating/)
--   [Finger - Risk Classification](https://www.casact.org/abstract/risk-classification-chapter-6)
-
-## Technical Resources
-
--   [Distributions for Actuaries](https://www.casact.org/sites/default/files/2021-02/02-Bahnemann.pdf)
--   [Generalized Linear Models for Insurance Rating](https://www.casact.org/sites/default/files/2021-01/05-Goldburd-Khare-Tevet.pdf)
--   [An Actuarial Review of Homeowners By Peril Rating](https://ar.casact.org/an-actuarial-review-of-homeowners-by-peril-rating/)
-
-## Data Sources (1/2)
+# Data Sources (1/2)
 
 ### Census Bureau Shapefiles
 
@@ -35,10 +11,6 @@
 - Census Block: ftp://ftp2.census.gov/geo/tiger/TIGER2024/TABBLOCK20/tl_2024_36_tabblock20.zip
 
 ## Data Sources (2/2)
-
-### Military Grid Reference System (MGRS) Shapefile
-
-- 1km grid: https://earth-info.nga.mil/index.php?dir=coordsys&action=mgrs-1km-polyline-dloads
 
 ### SSURGO Web Soil Survey Shapefile
 

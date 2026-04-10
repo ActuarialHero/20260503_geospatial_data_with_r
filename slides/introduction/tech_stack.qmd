@@ -8,9 +8,18 @@
 - GitHub - Source code control
 - GitHub Pages - Publishing the rendered presentation online (automatically!)
 
+::: {.notes}
+Obviously given the title of the presentation, we're using R.
+
+I used a mix of RStudio, and Positron for creating the presentation. Positron is the new VS Code-based IDE from Posit, which is the company formerly know as RStudio
+
+There's nothing magical about R here, the concepts apply to languages like Python and platforms like QGIS, ArcGIS, Mapbox, CARTO, etc.
+:::
+
 ## Tech Stack - R Libraries
 
-```{r Import libraries}
+```{r import_libraries}
+#| code-line-numbers: "1-5|7-11|12-14"
 #| echo: true
 #| code-fold: false
 #| code-summary: "Import libraries"
@@ -21,8 +30,7 @@ library(terra) # For working with raster geospatial data. Replaced raster
 terraOptions(progress = 0) # Turn off progress bars so they don't end up on slides
 library(leaflet) # For interactive maps
 
-# Others
-
+# Support
 library(curl) # For downloading files
 library(readr) # For reading CSVs
 library(dplyr) # For manipulating data
@@ -32,9 +40,13 @@ library(DT)
 options(DT.options = list(pageLength = 8, ordering = FALSE))
 ```
 
-## Tech Stack - Download Helper Function
+::: {.notes}
+Here are the libraries we'll use for this presentation. There are three main geospatial ones: sf, terra, and leaflet
 
-Function to help download files if they don't exist
+I also reference curl, readr, and dplyr for downlaoding and data manipulation, and DT for making interactive data tables.
+:::
+
+## Tech Stack - Download Helper Function
 
 ```{r Download Helper}
 #| echo: true
@@ -58,3 +70,11 @@ download_data <- function(url, relative_dir) {
   dest_mid
 }
 ```
+
+::: {.notes}
+I use this function create and download files
+
+I'm not going to go through it since the focus is on geospatial data
+
+You can review it at your leisure
+:::

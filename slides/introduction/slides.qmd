@@ -19,6 +19,10 @@ Source code on GitHub:
 
 No need to take photos of slides during the presentation.
 
-They're posted on my GitHub page and the CAS will post a copy as well
+They're posted on my GitHub page and on the CAS website.
+
+Slides on the left
+
+Source code on the right
 
 :::

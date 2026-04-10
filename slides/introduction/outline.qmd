@@ -2,7 +2,7 @@
 
 ::: {.incremental}
 - Tech Stack
-- Types of Geospatial Data
+- Two Types of Geospatial Data
 - Vector Data Sources
 - Raster Data Sources
 - Constructing Features

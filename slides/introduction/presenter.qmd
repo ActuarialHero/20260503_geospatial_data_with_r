@@ -28,7 +28,8 @@ I work on production implementation of rating algorithms at Arch, but spent much
 
 If you're sitting there wondering "But Arch doesn't do homeowners insurance?" You're correct. That's what made getting legal approval so easy
 
-Previously worked at
+Previously worked at:
+
 - Two insurance companies: Travelers & Crum and Forster 
 - Solera/Explore Information Services, a Motor Vehicle Record and Geospatial Data Vendor, and
 - Coherent, a software company
