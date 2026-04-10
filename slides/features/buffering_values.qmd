@@ -1,4 +1,4 @@
-## Buffering {background-color="#A1D6F4"}
+## Buffering
 
 - Draw a square or circular buffer around each centroid
 - More consistent number of data elements
@@ -6,7 +6,7 @@
 - Edges of the data set become problematic
 - This example uses circles
 
-## Buffering Example {background-color="#A1D6F4"}
+## Buffering Example
 
 ```{r Buffering example}
 #| echo: true
@@ -52,7 +52,7 @@ plot(cropped_raster)
 plot(selected_buffer, col = NA,  add = TRUE, title = selected_geoid)
 ```
 
-## Buffered Output Table {background-color="#A1D6F4"}
+## Buffered Output Table
 
 ```{r Buffered Table}
 #| echo: true
@@ -62,7 +62,7 @@ plot(selected_buffer, col = NA,  add = TRUE, title = selected_geoid)
 datatable(buffered_freq, rownames = FALSE)
 ```
 
-## Buffered Predominant Land Cover {background-color="#A1D6F4"}
+## Buffered Predominant Land Cover
 
 ```{r Buffered Predominant Land Cover}
 #| echo: true
@@ -78,7 +78,7 @@ buffered_predominant <- buffered_freq %>%
 datatable(buffered_predominant, rownames = FALSE)
 ```
 
-## Buffered Percent Land Cover {background-color="#A1D6F4"}
+## Buffered Percent Land Cover
 
 ```{r Buffered Percent Land Cover}
 #| echo: true

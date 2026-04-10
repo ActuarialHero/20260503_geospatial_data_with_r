@@ -1,10 +1,8 @@
 ## Vector File Types
 
-::: {.incremental}
-- Shapefile (.shp)
+- [Shapefile (.shp)]{.fragment .highlight-burnt-red}
 - GeoJSON (.geojson, .json)
 - Keyhole Markup Language (KML, KMZ)
 - Geography Markup Language (GML)
 - GPS eXchange Format (GPX)
 - GeoParquet (.parquet)
-:::

@@ -1,5 +1,5 @@
 
-## Masked vs. Buffered {background-color="#A1D6F4"}
+## Masked vs. Buffered
 
 ```{r Buffered vs. Percent}
 #| echo: true
@@ -17,7 +17,7 @@ datatable(masked_vs_buffered_percent, rownames = FALSE) %>%
   formatPercentage('pct_buff', digits = 1)
 ```
 
-## Masked vs. Buffered - NAs {background-color="#A1D6F4"}
+## Masked vs. Buffered - NAs
 
 ```{r Buffered vs. Percent - NAs}
 #| echo: true

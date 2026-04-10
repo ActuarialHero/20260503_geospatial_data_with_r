@@ -30,7 +30,7 @@ centroid_values <- centroids %>%
   arrange(GEOID, land_cover_code)
 ```
 
-## Centroid Data Table {background-color="#A1D6F4"}
+## Centroid Data Table
 
 ```{r Centroid Table}
 #| echo: true

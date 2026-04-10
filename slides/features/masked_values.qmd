@@ -1,4 +1,4 @@
-## Overlap {background-color="#A1D6F4"}
+## Overlap
 
 - Mask the raster with the shapes and summarize the data that fall within each shape
 
@@ -22,7 +22,7 @@ plot(tract, add = TRUE, col = NA, title = selected_shape)
 ```
 Then compute whatever static you want to try: min, median, average, max, predominant
 
-## Masked Output Table {background-color="#A1D6F4"}
+## Masked Output Table
 
 ```{r Masked Output Table}
 #| echo: true
@@ -52,7 +52,7 @@ masked_freq <- bind_rows(all_data) %>%
 datatable(masked_freq, rownames = FALSE)
 ```
 
-## Masked Pecent Land Cover {background-color="#A1D6F4"}
+## Masked Pecent Land Cover
 
 ```{r Masked Percent Land Cover}
 #| echo: true
@@ -74,7 +74,7 @@ Would probably transpose this so the different land covers are columns
 Might set indictor variables with thresholds, like this land cover exists or it's more than x% this land cover
 :::
 
-## Masked Predominant Land Cover {background-color="#A1D6F4"}
+## Masked Predominant Land Cover
 
 ```{r Masked Predominant Land Cover}
 #| echo: true

@@ -65,13 +65,20 @@ Manhattan is a nice set of territories here. A couple of notes:
 
 ## ZIP Codes Pros/Cons
 
+::: {.fragment}
 - Pros:
   - People know their ZIP Code
+
+:::
+
+::: {.fragment}
 - Cons:
   - Any visual geographic boundary representation is an artistic interpretation of the ZIP + 4 file from the USPS, which is a list of 43 million addresses
   - They can cross city, county, and state boundaries
-  - While individual address ZIP codes *are* mutually exclusive and exhaustive, territory representations are neither:
+  - Territory representations are neither:
     - ZIP Codes overlap
     - Some areas with currently no population don't get drawn inside a ZIP Code
   - There are 40,000+ changes per year. Visual representations like ZCTA don't pick up all the changes immediately
   - Some ZIP codes only represent a single building
+
+:::

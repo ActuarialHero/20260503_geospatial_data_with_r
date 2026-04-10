@@ -36,12 +36,8 @@ census_state %>% arrange(STATEFP)
 
 ::: {.notes}
 
-* Downloads the file from the Census Bureau Website.
-* I try to keep the same pathing as the source website. It makes it easier for a successor to see where to get future data updates
-* I tend to organize organize data into row, intermediate data sets, and final output data
-
 * We'll use the read_sf function in the simple features package to read the shapefile
-* There are two pieces were care about - a data table and the shapes. Let's look at the data table first
+* We have two things available to us: a data table and the shapes. Let's look at the data table first
 
 * The summary at the top lets us know the bounding box, or extent, of the shapes.
 * Where it says "A tibble", it shows there are 56 of the 50 states + DC represented. The extras are the territories.

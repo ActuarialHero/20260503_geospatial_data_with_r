@@ -15,6 +15,7 @@ $code-font-size: 1.4em;
 .reveal .fragment.highlight-burnt-red {
   // This defines the color BEFORE it is clicked (usually matches the rest of the text)
   opacity: 1; 
+  visibility: inherit;
   
   &.visible.current-fragment {
     // This defines the color when it is the ACTIVE highlight

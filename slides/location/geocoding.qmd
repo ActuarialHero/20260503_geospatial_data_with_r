@@ -1,5 +1,7 @@
 ## Where is the propety?
 
+::: {.fragment}
+
 - Geocoding
 
   - Lots of providers. Three examples:
@@ -10,9 +12,15 @@
   - Mailbox vs. building
     
   - May not be accurate, particularly for new properties
-  
+
+:::
+
+::: {.fragment}
+
 - Building Footprints
   - Outline of the entire building
   - https://onegeo.co/documentation/api/
   - https://planetarycomputer.microsoft.com/dataset/ms-buildings#overview
   - https://dataforgood.facebook.com/dfg/tools/buildings
+
+:::
