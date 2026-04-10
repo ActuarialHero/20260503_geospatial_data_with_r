@@ -1,4 +1,4 @@
-## Where is the propety?
+## Where is the property?
 
 ::: {.fragment}
 

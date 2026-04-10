@@ -1,4 +1,4 @@
-## Location-specific features {background-color="#A1D6F4"}
+## Location-specific features
 
 - Direct assignment of values to specific properties
 - Distance to Coast
