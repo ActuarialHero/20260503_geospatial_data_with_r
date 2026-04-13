@@ -13,6 +13,6 @@
 :::
 
 :::{.notes }
-
+This will focus heavily on the types of data and the mechanics of working with the data in R.
 
 :::

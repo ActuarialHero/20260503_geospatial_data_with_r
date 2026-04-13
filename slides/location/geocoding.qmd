@@ -1,26 +1,24 @@
-## Where is the property?
+## Geocoding
 
 ::: {.fragment}
 
-- Geocoding
+- Geocoding - Converting an address to longitude / latitude coordinates.
 
-  - Lots of providers. Three examples:
-    - ESRI ArcGIS: https://developers.arcgis.com/rest/geocode/geocode-addresses/
-    - Google Maps: https://developers.google.com/maps/documentation/geocoding/reference/rest/v4beta/GeocodeResult.Granularity
-    - mapbox: https://docs.mapbox.com/api/search/geocoding/
-  - Single point
-  - Mailbox vs. building
-    
-  - May not be accurate, particularly for new properties
-
+  - Sample providers:
+    - [ESRI ArcGIS](https://developers.arcgis.com/rest/geocode/geocode-addresses/)
+      - Score measures the quality of the geocoding
+    - [Google Maps](https://developers.google.com/maps/documentation/geocoding/reference/rest/v4beta/GeocodeResult.Granularity)
+    - [mapbox](https://docs.mapbox.com/api/search/geocoding/)
+  - Quality matters...
 :::
 
-::: {.fragment}
+::: {.notes}
+Knowing where the location is is extremely important. I'll focus mainly on geocoding today.
 
-- Building Footprints
-  - Outline of the entire building
-  - https://onegeo.co/documentation/api/
-  - https://planetarycomputer.microsoft.com/dataset/ms-buildings#overview
-  - https://dataforgood.facebook.com/dfg/tools/buildings
+There are lots of vendors that provide Geocoding. Don't try to roll your own. It's hard to get it right and maintain it.
+
+I've listed a few of the larger non-insurance-specific geospatial vendors on the slide. 
+
+If you have a particularly new address and some slick software engineers, you could pull the EXIF metadata from photos taken by the customer, agent, underwriter, etc. to get the location.
 
 :::

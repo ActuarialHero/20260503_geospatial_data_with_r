@@ -2,4 +2,6 @@
 
 {{< include /slides/location/geocoding.qmd >}}
 
+{{< include /slides/location/null_island.qmd >}}
+
 {{< include /slides/location/location_features.qmd >}}

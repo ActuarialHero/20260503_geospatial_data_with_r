@@ -1,0 +1,48 @@
+##  
+
+::: columns
+
+::: {.column width="50%"}
+
+::: {.fragment}
+
+![](images/null_island.jpg)
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+### Null Island
+
+- Coordinates: (0° N, 0° E)
+- Not actually an island
+- Not where your customer's home is:
+
+::: {.fragment}
+
+![](images/null_island_map.png)
+
+:::
+
+:::
+
+:::
+
+:::
+
+::: {.fragment }
+
+Photo Credit: Graham Curran (License: CC BY-SA 4.0)
+
+:::
+
+::: {.notes}
+
+This is not really an island, even the weather buoy is no longer there.
+
+This is a humorous example of Geocoding gone wrong, but when you have thousands or millions of homes, some of them will be blatantly miss-geocoded. You want to minimize this so your customer get charged the correct premium
+
+:::
