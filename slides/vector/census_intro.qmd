@@ -2,8 +2,14 @@
 
 - States
 - Counties
-- Cities
-- ZIP Codes
 - Tract
 - Block Group
 - Blocks
+- ZIP Codes Tabulation Areas
+
+::: {.notes}
+The Census Bureau provides a variety of boundaries. Some of these appear in insurance carrier filings.
+
+We'll focus on the ones listed on the slide today, but there are more available from the Census Burea
+
+:::

@@ -6,3 +6,9 @@
 - Geography Markup Language (GML)
 - GPS eXchange Format (GPX)
 - GeoParquet (.parquet)
+
+::: {.notes}
+There are a variety of file times that vector data come in.
+
+Your starting point is typically beholden to the vendor providing the data. For today, we'll be focusing on Shapefiles.
+:::

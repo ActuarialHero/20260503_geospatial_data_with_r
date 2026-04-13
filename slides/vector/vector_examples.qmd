@@ -7,9 +7,10 @@
 - Soils Survey Geographic Database (USDA SSURGO)
 - National Hurricane Center Hurricane Paths
 - NOAA Severe Weather Data Inventory
+- And more!
 
 ::: {.notes}
-More examples than we can cover today.
+More examples than we can possibly cover today.
 
-We'll focus on the Census Bureau, Grids, and Soil Survey Data
+We'll focus on the Census Bureau and Soil Survey shapefiles
 :::

@@ -11,9 +11,9 @@
 ::: {.notes}
 Obviously given the title of the presentation, we're using R.
 
-I used a mix of RStudio, and Positron for creating the presentation. Positron is the new VS Code-based IDE from Posit, which is the company formerly know as RStudio
-
 There's nothing magical about R here, the concepts apply to languages like Python and platforms like QGIS, ArcGIS, Mapbox, CARTO, etc.
+
+I used a mix of RStudio, and Positron for creating the presentation. Positron is the new VS Code-based IDE from Posit, which is the company formerly know as RStudio
 :::
 
 ## Tech Stack - R Libraries

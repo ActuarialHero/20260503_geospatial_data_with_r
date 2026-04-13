@@ -50,8 +50,9 @@ State: Since regulatory approval is by state, this is the least granular your te
 ## New York Leaflet Plot
 
 ```{r Census State Leaflet Plot - NY}
+#| code-line-numbers: "1|2|3|4"
 #| echo: true
-#| code-fold: true
+#| code-fold: show
 #| code-summary: "Leaflet Code"
 
 census_state %>%
@@ -63,8 +64,9 @@ census_state %>%
 ## New York Leaflet Plot With Basemap
 
 ```{r Census State Leaflet Plot With Basemap - NY}
+#| code-line-numbers: "4"
 #| echo: true
-#| code-fold: true
+#| code-fold: show
 #| code-summary: "Leaflet Code"
 
 census_state %>%
