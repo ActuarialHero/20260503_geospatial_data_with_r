@@ -23,3 +23,19 @@ $code-font-size: 1.4em;
     transition: color 0.3s ease; // Smooth color transition
   }
 }
+
+.giant-question-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25rem; // Adjust size as needed
+  font-weight: 900;
+  color: white;
+  
+  // Moves it up
+  margin-top: -100px;
+  
+  // The "Cartoon" Outline
+  -webkit-text-stroke: 6px black;
+  filter: drop-shadow(5px 5px 0px rgba(0,0,0,0.2));
+}
