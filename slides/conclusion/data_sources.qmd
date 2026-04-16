@@ -1,0 +1,5 @@
+# Data Sources
+
+- [Census Bureau](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html)
+- [SSURGO Web Soil Survey](https://websoilsurvey.nrcs.usda.gov/app/WebSoilSurvey.aspx)
+- [National Land Cover Dataset](https://www.mrlc.gov/data)

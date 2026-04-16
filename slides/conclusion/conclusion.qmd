@@ -25,7 +25,7 @@
 - Conclusion
 :::
 
-## Questions
+## Questions {transition="fade"}
 
 - Tech Stack
 - Types of Geospatial Data
@@ -37,4 +37,4 @@
 - Example Territory Maps
 - Conclusion
 
-{{< include /slides/conclusion/learn_more.qmd >}}
+{{< include /slides/conclusion/data_sources.qmd >}}
