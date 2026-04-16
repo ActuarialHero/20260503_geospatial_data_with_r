@@ -47,3 +47,18 @@ https://xkcd.com/license.html
 
 :::
 
+## Implementation Considerations
+
+:::{.incremental}
+
+- Territory Tables are pre-scored and static
+- May need to update the filing for re-scoring
+- Model version used based on policy effective date
+- The more complicated they get, the harder the implementation gets
+- Make sure your territory assignments match your territories
+
+:::
+
+::: {.notes}
+Implementation is hard, and insurance company IT teams often have difficulty implementing rating correctly without having to deal with geospatial data
+:::

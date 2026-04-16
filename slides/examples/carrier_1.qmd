@@ -40,6 +40,24 @@ zip_carrier_1_ny <- zcta %>%
   inner_join(carrier_1_ny, by = c("ZCTA5CE20" = "zip"))
 ```
 
+## Carrier 1 - Factor Table
+
+```{r Read in Carrier 1 Territory Factor Table}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
+carrier_1_factors <- zip_carrier_1_ny %>%
+  st_drop_geometry %>%
+  select(ZCTA5CE20, fire1:other)
+
+nums <- which(sapply(carrier_1_factors, is.numeric))
+
+carrier_1_factors %>%
+  datatable(rownames = FALSE) %>%
+  formatRound(columns = nums, digits = 3)
+```
+
 ## Carrier 1 - Weather Water
 
 ```{r Carrier 1 NY Weather Water}

@@ -1,16 +1,5 @@
 # Conclusion
 
-## Implementation Considerations
-
-:::{.incremental}
-
-- Territory Tables are pre-scored and static
-- May need to update the filing for re-scoring
-- Model version used based on policy effective date
-- The more complicated they get, the harder the implementation gets
-
-:::
-
 ## Conclusion
 
 ::: {.incremental}

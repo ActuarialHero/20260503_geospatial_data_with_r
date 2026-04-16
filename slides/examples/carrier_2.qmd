@@ -7,9 +7,9 @@
     - Non-Hurricane
 - Synthesized factors similar to the real factors, but not the actual factors
 
-## Carrier 2 - Synthetic Non-Hurricane Factors
+## Carrier 2 - Factor Table
 
-```{r New York State}
+```{r Read in Carrier 2 Territory Factor Table}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show code"
@@ -19,8 +19,23 @@ carrier_2_ny <- read_csv("./data_in/examples/carrier_2_synthetic.csv",
                          col_names = c("GRID_ID", "HURR_FCTR", "NONHURR_FCTR"),
                          skip = 1)  %>%
   mutate( # This parses the coordinate out of GRID_ID
-    y =   0.01 * as.numeric(substr(GRID_ID, 1, 5)),
-    x = - 0.01 * as.numeric(substr(GRID_ID, 6, 10)))
+    y = round(  0.01 * as.numeric(substr(GRID_ID, 1, 5 )), 2),
+    x = round(- 0.01 * as.numeric(substr(GRID_ID, 6, 10)), 2)) %>%
+  select(GRID_ID, y, x, HURR_FCTR, NONHURR_FCTR)
+
+carrier_2_ny %>%
+  datatable(rownames = FALSE) %>%
+  formatRound(columns = c(2, 3), digits = 2) %>%
+  formatRound(columns = c(4, 5), digits = 4)
+```
+
+## Carrier 2 - Synthetic Non-Hurricane Factors
+
+```{r New York State}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show code"
+
 
 # Turn it into a raster
 nonhurr_ny <- rast(carrier_2_ny[, c("x", "y", "NONHURR_FCTR")], crs = crs('+proj=longlat +datum=WGS84'))
@@ -42,7 +57,7 @@ leaflet() %>%
 
 ## Carrier 2 - Synthetic Hurricane Factors
 
-```{r State Farm NY hurricane factors}
+```{r Carrier 2 NY hurricane factors}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show code"
