@@ -1,9 +1,7 @@
 # Example Territory Maps
 
-A review of the three largest New York Home Insurance Companies
+Synthesized factors based on two Top 10 carrier territory maps
 
-{{< include /slides/examples/chubb.qmd >}}
+{{< include /slides/examples/carrier_1.qmd >}}
 
-{{< include /slides/examples/allstate.qmd >}}
-
-{{< include /slides/examples/state_farm.qmd >}}
+{{< include /slides/examples/carrier_2.qmd >}}

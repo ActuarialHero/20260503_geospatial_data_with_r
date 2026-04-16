@@ -1,22 +1,13 @@
-## No. 1: State Farm
-
-State Farm Fire And Casualty Company (25143)
-
-Ranked #1 in NY ($1.2B in 2024 Direct Written Premium)
+## Carrier 2
 
 - Granularity: "Location Rating" Grid
   - Decimal degrees to two decimal places
 - 2 Perils:
     - Hurricane 
     - Non-Hurricane
-- Source: 4,637 PDF pages of data
+- Synthesized factors similar to the real factors, but not the actual factors
 
-::: {.notes}
-Extracted using Tabula
-Excel get data from PDF also works well
-:::
-
-## State Farm - Non-Hurricane Factors
+## Carrier 2 - Synthetic Non-Hurricane Factors
 
 ```{r New York State}
 #| echo: true
@@ -24,13 +15,15 @@ Excel get data from PDF also works well
 #| code-summary: "Show code"
 
 # Starts extracting the table from PDF
-sf_ny <- read_csv("./references_private/state_farm_20200715.csv", col_names = c("GRID_ID", "HURR_FCTR", "NONHURR_FCTR"))  %>%
+carrier_2_ny <- read_csv("./data_in/examples/carrier_2_synthetic.csv",
+                         col_names = c("GRID_ID", "HURR_FCTR", "NONHURR_FCTR"),
+                         skip = 1)  %>%
   mutate( # This parses the coordinate out of GRID_ID
     y =   0.01 * as.numeric(substr(GRID_ID, 1, 5)),
     x = - 0.01 * as.numeric(substr(GRID_ID, 6, 10)))
 
 # Turn it into a raster
-nonhurr_ny <- rast(sf_ny[, c("x", "y", "NONHURR_FCTR")], crs = crs('+proj=longlat +datum=WGS84'))
+nonhurr_ny <- rast(carrier_2_ny[, c("x", "y", "NONHURR_FCTR")], crs = crs('+proj=longlat +datum=WGS84'))
 
 # Set up a color palette
 pal <- colorBin(
@@ -40,16 +33,14 @@ pal <- colorBin(
   na.color = "transparent"
 )
 
-# Useful for seeing how frequent factors are
-# Override digits since it rounds to integers by default
-# freq(nonhurr_ny, digits = 3)
+# Plot factors
 leaflet() %>%
   addTiles() %>%
   addRasterImage(nonhurr_ny, colors = pal, opacity = 0.5) %>%
   addLegend(pal = pal, values = values(nonhurr_ny), title = "Non-Hurricane Factor")
 ```
 
-## State Farm - Hurricane Factors
+## Carrier 2 - Synthetic Hurricane Factors
 
 ```{r State Farm NY hurricane factors}
 #| echo: true
@@ -58,7 +49,7 @@ leaflet() %>%
 
 
 # Turn it into a raster
-hurr_ny <- rast(sf_ny[, c("x", "y", "HURR_FCTR")], crs = crs('+proj=longlat +datum=WGS84'))
+hurr_ny <- rast(carrier_2_ny[, c("x", "y", "HURR_FCTR")], crs = crs('+proj=longlat +datum=WGS84'))
 
 # Set up a color palette
 pal <- colorBin(

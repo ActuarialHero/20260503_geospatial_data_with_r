@@ -1,6 +1,4 @@
-## No. 2: Allstate
-
-Allstate Vehicle and Property Insurance Company (37907)
+## Carrier 1
 
 ZIP Code-based territories
 
@@ -14,34 +12,37 @@ ZIP Code-based territories
 | Brush Fire | Hurricane         | Lightning | Other        |
 +------------+-------------------+-----------+--------------+
 
+Synthesized factors similar to the real factors, but not the actual factors
+
 ::: {.notes}
-Their eSurance company in Nevada uses 0.05, 0.1, 0.2, 0.4 grid  SERFF ESUR-129867328 Page 920
+Carrier one has 12 perils. We'll look at a few of them.
 
 :::
 
-```{r Read in Allstate Factors & Join to ZCTA File}
+```{r Read in Carrier 1 Factors & Join to ZCTA File}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show code"
 
-# Read in Allstate factor table
-allstate_ny <- read_csv("./references_private/allstate_factors.csv",
+# Read in Carrier 1 factor table
+carrier_1_ny <- read_csv("./data_in/examples/carrier_1_synthetic.csv",
                         col_names = c("zip",
                                       "fire1", "fire2", "brush_fire", "water_weather",
                                       "water_nonweather", "wind", "hail", "lightning",
                                       "theft", "liability", "hurricane", "other"),
+                        col_types = "cdddddddddddd",
                         skip = 1)
 
 # Join factors to ZIP shapefile
-zip_allstate_ny <- zcta %>%
+zip_carrier_1_ny <- zcta %>%
   # Simplify the shape so the deck doesn't exceed the 100 MB limit of GitHub
   st_simplify(preserveTopology = TRUE, dTolerance = 50) %>%
-  inner_join(allstate_ny, by = c("ZCTA5CE20" = "zip"))
+  inner_join(carrier_1_ny, by = c("ZCTA5CE20" = "zip"))
 ```
 
-## Allstate - Weather Water
+## Carrier 1 - Weather Water
 
-```{r Allstate NY Weather Water}
+```{r Carrier 1 NY Weather Water}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show code"
@@ -49,13 +50,13 @@ zip_allstate_ny <- zcta %>%
 # Set up a color palette
 pal <- colorBin(
   palette = c("#4575b4", "#91bfdb","#e0f3f8","#fee090","#fc8d59","#d73027"),
-  domain = zip_allstate_ny$water_weather,
+  domain = zip_carrier_1_ny$water_weather,
   bins = c(0.6, 0.8, 1.0, 1.20, 1.4, 1.6, 1.8),
   na.color = "transparent"
 )
 
 # Plot on top of Open Street Maps basemap
-leaflet(zip_allstate_ny) %>%
+leaflet(zip_carrier_1_ny) %>%
   addTiles() %>%
   addPolygons(
     fillColor = ~pal(water_weather),
@@ -65,9 +66,9 @@ leaflet(zip_allstate_ny) %>%
   addLegend(pal = pal, values = ~water_weather, title = "Weather Water")
 ```
 
-## Allstate - Wind
+## Carrier 1 - Wind
 
-```{r Allstate NY Wind}
+```{r Carrier 1 NY Wind}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show code"
@@ -76,13 +77,13 @@ leaflet(zip_allstate_ny) %>%
 # Set up a color palette
 pal <- colorBin(
   palette = c("#4575b4", "#91bfdb","#e0f3f8","#fee090","#fc8d59","#d73027"),
-  domain = zip_allstate_ny$wind,
+  domain = zip_carrier_1_ny$wind,
   bins = c(0.6, 0.8, 1.0, 1.20, 1.4, 1.6, 1.8),
   na.color = "transparent"
 )
 
 # Plot on top of Open Street Maps basemap
-leaflet(zip_allstate_ny) %>%
+leaflet(zip_carrier_1_ny) %>%
   addTiles() %>%
   addPolygons(
     fillColor = ~pal(wind),
@@ -94,9 +95,9 @@ leaflet(zip_allstate_ny) %>%
 
 
 
-## Allstate - Theft
+## Carrier 1 - Theft
 
-```{r Allstate NY Theft}
+```{r Carrier 1 NY Theft}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show code"
@@ -105,13 +106,13 @@ leaflet(zip_allstate_ny) %>%
 # Set up a color palette
 pal <- colorBin(
   palette = c("#4575b4", "#91bfdb","#e0f3f8","#fee090","#fc8d59","#d73027"),
-  domain = zip_allstate_ny$theft,
+  domain = zip_carrier_1_ny$theft,
   bins = c(0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.00),
   na.color = "transparent"
 )
 
 # Plot on top of Open Street Maps basemap
-leaflet(zip_allstate_ny) %>%
+leaflet(zip_carrier_1_ny) %>%
   addTiles() %>%
   addPolygons(
     fillColor = ~pal(theft),
@@ -122,9 +123,9 @@ leaflet(zip_allstate_ny) %>%
 ```
 
 
-## Allstate - Hurricane
+## Carrier 1 - Hurricane
 
-```{r Allstate NY hurricane factors}
+```{r Carrier 1 NY hurricane factors}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show code"
@@ -132,13 +133,13 @@ leaflet(zip_allstate_ny) %>%
 # Set up a color palette
 pal <- colorBin(
   palette = c("#4575b4", "#91bfdb","#e0f3f8","#ffffbf","#fee090","#fc8d59","#d73027"),
-  domain = zip_allstate_ny$hurricane,
+  domain = zip_carrier_1_ny$hurricane,
   bins = c(0, 0.5, 1.5, 2.5, 4.0, 5.0, 6.0, 7.5, 10.0),
   na.color = "transparent"
 )
 
 # Plot on top of Open Street Maps basemap
-leaflet(zip_allstate_ny) %>%
+leaflet(zip_carrier_1_ny) %>%
   addTiles() %>%
   addPolygons(
     fillColor = ~pal(hurricane),
