@@ -1,7 +1,6 @@
 ## Carrier 2
 
-- Granularity: "Location Rating" Grid
-  - Decimal degrees to two decimal places
+- Grid - Decimal degrees to two decimal places
 - 2 Perils:
     - Hurricane 
     - Non-Hurricane
@@ -14,7 +13,7 @@
 #| code-line-numbers: "|1-4|5-7|8|11-14"
 
 # CSV extracted from PDF with synthetic factors
-carrier_2_ny <- read_csv("./data_in/examples/carrier_2_synthetic.csv",
+carrier_2_ny <- read_csv("./references_public/carrier_2_synthetic.csv",
                          col_names = c("GRID_ID", "HURR_FCTR", "NONHURR_FCTR"),
                          skip = 1)  %>%
   mutate( # This parses the coordinate out of GRID_ID

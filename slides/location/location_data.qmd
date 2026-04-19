@@ -5,3 +5,7 @@
 {{< include /slides/location/null_island.qmd >}}
 
 {{< include /slides/location/location_features.qmd >}}
+
+::: {.notes}
+Now that we've looked at constructing territory-level features, let's briefly touch on location-level features
+:::

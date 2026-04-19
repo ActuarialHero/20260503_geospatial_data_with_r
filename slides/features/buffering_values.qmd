@@ -6,19 +6,41 @@
 - Edges of the data set become problematic
 - This example uses circles
 
+``` {r Buffer Example}
+#| code-summary: "Census Tract / NLCD Overlap Buffer"
+#| code-line-numbers: "|1-3|5-8|10-12|14-16"
+#| code-fold: true
+
+
+# Sheraton New York Times Square Hotel Census Tract
+selected_geoid <- "36061013100"
+selected_tract <- filter(new_york_county_tracts_nlcd_crs, GEOID == selected_geoid)
+
+# Create a buffer around the centroid
+selected_buffer <- selected_tract %>%
+  st_centroid() %>%
+  st_buffer(dist = 1000)
+
+# Crop and mask
+cropped_raster <- crop(nlcd, ext(selected_buffer)) # Cropping first makes this faster
+masked_raster <- mask(cropped_raster, selected_buffer)
+
+# Plot
+plot(masked_raster)
+plot(selected_buffer, col = NA,  add = TRUE, title = selected_geoid)
+```
+
 ## Buffering Example
 
-```{r Buffering example}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
+```{r Buffering Example - Loop}
+#| code-summary: "Census Tract / NLCD Overlap Buffer - Loop"
+#| code-line-numbers: "|1-3|4-8,13-19|10-11|21-25"
 
 # Create buffers
 buffers <- st_buffer(centroids, dist = 1000)  # 1 km buffer
 
-# Loop through ZIPs
+# Loop through Tracts
 for (i in 1:nrow(buffers)) {
-#for (i in 1:1) {
   if(i == 1) {
     all_data <- NULL
   } 
@@ -39,51 +61,23 @@ buffered_freq <- bind_rows(all_data) %>%
   mutate(count = as.numeric(count)) %>%
   rename(land_cover = value) %>%
   arrange(GEOID, land_cover)
-
-# Example
-
-selected_geoid <- "36061013100"
-selected_buffer <- filter(buffers, GEOID == selected_geoid)
-
-cropped_raster <- crop(nlcd, ext(selected_buffer)) # Cropping first makes this faster
-masked_raster <- mask(cropped_raster, selected_buffer)
-
-plot(cropped_raster)
-plot(selected_buffer, col = NA,  add = TRUE, title = selected_geoid)
 ```
 
-## Buffered Output Table
+## Buffered Frequency Data Table
 
-```{r Buffered Table}
-#| echo: true
-#| code-fold: true
+```{r Buffered Census Tract / NLCD Overlap Frequency Table}
 #| code-summary: "Show code"
+#| code-fold: true
 
+# Display table on slide
 datatable(buffered_freq, rownames = FALSE)
-```
-
-## Buffered Predominant Land Cover
-
-```{r Buffered Predominant Land Cover}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
-
-# Predominant land cover
-buffered_predominant <- buffered_freq %>%
-  group_by(GEOID) %>%
-  arrange(GEOID, desc(count)) %>%
-  top_n(1)
-
-datatable(buffered_predominant, rownames = FALSE)
 ```
 
 ## Buffered Percent Land Cover
 
 ```{r Buffered Percent Land Cover}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
+#| code-summary: "Census Tract / NLCD Buffer - Percent Land Cover"
+#| code-line-numbers: "|1-5|3-4"
 
 # Percent of ZIP for each land cover
 buffered_percent <- buffered_freq %>%
@@ -94,3 +88,19 @@ buffered_percent <- buffered_freq %>%
 datatable(buffered_percent, rownames = FALSE) %>%
   formatPercentage('percent', digits = 1)
 ```
+
+## Buffered Predominant Land Cover
+
+```{r Buffered Predominant Land Cover}
+#| code-summary: "Census Tract / NLCD Buffer - Predominant Land Cover"
+#| code-line-numbers: "|1-5|3-4"
+
+# Predominant land cover
+buffered_predominant <- buffered_freq %>%
+  group_by(GEOID) %>%
+  arrange(GEOID, desc(count)) %>%
+  top_n(1)
+
+datatable(buffered_predominant, rownames = FALSE)
+```
+

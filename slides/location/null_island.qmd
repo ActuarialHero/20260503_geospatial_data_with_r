@@ -19,7 +19,7 @@
 
 - Coordinates: (0° N, 0° E)
 - Not actually an island
-- Not where your customer's home is:
+- Your customer does not live here:
 
 ::: {.fragment}
 

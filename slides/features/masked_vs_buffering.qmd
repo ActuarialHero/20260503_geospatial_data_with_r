@@ -12,7 +12,7 @@ masked_vs_buffered_percent <- masked_percent %>%
   rename_with(~ gsub("percent", "pct", .x), contains("percent")) %>%
   rename_with(~ gsub("count", "cnt", .x), contains("count"))
 
-datatable(masked_vs_buffered_percent, rownames = FALSE) %>%
+datatable(masked_vs_buffered_percent, rownames = FALSE, options = list(pageLength = 6)) %>%
   formatPercentage('pct_mask', digits = 1) %>%
   formatPercentage('pct_buff', digits = 1)
 ```
@@ -29,7 +29,8 @@ datatable(masked_vs_buffered_percent, rownames = FALSE) %>%
 masked_vs_buffered_percent_null <- masked_vs_buffered_percent %>%
   filter(is.na(cnt_mask) | is.na(cnt_buff))
 
-datatable(masked_vs_buffered_percent_null, rownames = FALSE) %>%
+datatable(masked_vs_buffered_percent_null, rownames = FALSE, options = list(pageLength = 6)) %>%
   formatPercentage('pct_mask', digits = 1) %>%
   formatPercentage('pct_buff', digits = 1)
 ```
+

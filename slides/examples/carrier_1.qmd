@@ -24,7 +24,7 @@ Carrier one has 12 perils. We'll look at a few of them.
 #| code-line-numbers: "|1-8|10-14|12-13"
 
 # Read in Carrier 1 factor table
-carrier_1_ny <- read_csv("./data_in/examples/carrier_1_synthetic.csv",
+carrier_1_ny <- read_csv("./references_public/carrier_1_synthetic.csv",
                         col_names = c("zip",
                                       "fire1", "fire2", "brush_fire", "water_weather",
                                       "water_nonweather", "wind", "hail", "lightning",

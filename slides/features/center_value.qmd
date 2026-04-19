@@ -5,12 +5,12 @@
 - Using the centroid here, but internal point may be better
 
 ```{r Centroid Lookup}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
+#| code-summary: "Centroid NLCD Lookup"
+#| code-line-numbers: "|1-3|5-6|8-9|11-12|14-20"
 
 # Transform CRS to match NLCD
-new_york_county_tracts_nlcd_crs <- st_transform(new_york_county_tracts, crs(nlcd))
+new_york_county_tracts_nlcd_crs <- new_york_county_tracts %>%
+  st_transform(crs(nlcd))
 
 # Calculate the centroids of the tracts
 centroids <- st_centroid(new_york_county_tracts_nlcd_crs)
@@ -19,7 +19,7 @@ centroids <- st_centroid(new_york_county_tracts_nlcd_crs)
 centroid_values <- extract(nlcd, centroids, layer = 1)
 
 # Read in land cover descriptions
-nlcd_descriptions <- read_csv("data_in/nlcd/nlcd_classes.csv")
+nlcd_descriptions <- read_csv("references_public/nlcd_classes.csv")
 
 # Bind data
 centroid_values <- centroids %>%
@@ -33,9 +33,8 @@ centroid_values <- centroids %>%
 ## Centroid Data Table
 
 ```{r Centroid Table}
-#| echo: true
-#| code-fold: true
 #| code-summary: "Show code"
+#| code-fold: true
 
 datatable(centroid_values, rownames = FALSE)
 ```

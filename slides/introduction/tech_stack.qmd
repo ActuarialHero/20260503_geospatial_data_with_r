@@ -36,7 +36,6 @@ library(dplyr) # For manipulating data
 # Interface to JavaScript library DataTables
 library(DT)
 options(DT.options = list(pageLength = 8))
-# options(DT.options = list(ordering = FALSE))
 ```
 
 ::: {.notes}

@@ -2,7 +2,7 @@
 
 ```{r Construct a 0.01 x 0.01 decimal degree grid}
 #| code-summary: "Construct & Plot 0.01 x 0.01 decimal degree grid"
-#| code-line-numbers: "|1-3|5-7|8-9|10|12-15"
+#| code-line-numbers: "|1-3|5-7|8-9|10|13-16"
 
 # Filter to Manhattan County
 manhattan_county <- census_county %>%
@@ -14,6 +14,7 @@ manhattan_grid_decimal_01 <- manhattan_county %>%
   st_make_grid(cellsize = c(0.01, 0.01), square = TRUE) %>%
   st_sf() %>%
   st_intersection(manhattan_county)
+
 
 # Plot
 leaflet(manhattan_grid_decimal_01) %>%

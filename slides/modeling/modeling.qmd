@@ -16,23 +16,16 @@ Storms can cause multiple claims, leading to correlations across policies in the
 
 ## Models May Vary by State
 
-::: {.fragment}
 - State Statutes may influence territory boundaries:
   - Minnesota Statute 72A.20 Subd. 13
-
-:::
-::: {.fragment}
-
 - Some state regulators don't like specific variables
 - Some regulatory require revealing more information about your model
 - Data availability
   - Some of the data sets aren't available in Alaska and/or Hawaii
-  - The data is available, but different for a specific state
+  - The data is available, but different
 - Cost/benefit for some regions, like Alaska
   - Alaska is huge and requires a ton of processing power
   - Alaska wraps around to the Eastern Hemisphere, so extra edge cases
-
-:::
 
 ## Modeling Process
 

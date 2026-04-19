@@ -2,7 +2,7 @@
 
 ```{r Plot Manhattan Block Groups}
 #| code-summary: "Leaflet Census Block Groups Map - Manhattan County"
-#| code-line-numbers: "|1-4|6-7|9-11|13-17"
+#| code-fold: true
 
 # Download data using our helper function
 download_data(
