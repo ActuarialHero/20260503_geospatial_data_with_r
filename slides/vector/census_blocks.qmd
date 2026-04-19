@@ -1,37 +1,32 @@
 ## Census Blocks
 
-```{r Download and Read New York Blocks}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Download and Read New York Census Blocks"
-#| results: "hide"
-
-url <- "https://www2.census.gov/geo/tiger/TIGER2025/TABBLOCK20/tl_2025_36_tabblock20.zip"
-dest_in <- "./data_in/census/TIGER2025/TABBLOCK20/tl_2025_36_tabblock20.zip"
-dest_mid <- "./data_mid/census/TIGER2025/TABBLOCK20/tl_2025_36_tabblock20/tl_2025_36_tabblock20.zip"
-
-if(!file.exists(dest_in)) {
-  dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
-  curl_download(url, dest_in)
-  
-  dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
-  unzip(dest_in, exdir = dirname(dest_mid))
-}
-
-new_york_county_blocks  <- read_sf("data_mid/census/TIGER2025/TABBLOCK20/tl_2025_36_tabblock20/tl_2025_36_tabblock20.shp") %>%
-  filter(STATEFP20 == "36", COUNTYFP20 == "061") # Different field names
-```
-
 ```{r Plot Manhattan Blocks}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Plot Manhattan Blocks"
+#| code-summary: "Leaflet Census Blocks Map - Manhattan County"
+#| code-line-numbers: "|11"
 
-leaflet(new_york_county_blocks) %>%
+# Download data using our helper function
+download_data(
+  url = "https://www2.census.gov/geo/tiger/TIGER2025/TABBLOCK20/tl_2025_36_tabblock20.zip",
+  relative_dir = "census/TIGER2025/TABBLOCK20")
+
+# Read Shapefile
+census_blocks  <- read_sf("./data_mid/census/TIGER2025/TABBLOCK20/tl_2025_36_tabblock20.shp")
+
+# Filter to Manhattan County (061)
+new_york_county_blocks <- census_blocks %>%
+  filter(STATEFP20 == "36", COUNTYFP20 == "061") # Different field names
+
+# Plot Leaflet Map
+new_york_county_blocks %>%
+  leaflet() %>%
   addTiles() %>%
   addPolygons(weight = 0.5, opacity = 1.0)
 ```
   
 ::: {.notes}
+Exact same mechanics as the previous slide
+
+One difference - field names! Why? I don't know...
+
 8,132,968 blocks in the 50 states + D.C.
 :::

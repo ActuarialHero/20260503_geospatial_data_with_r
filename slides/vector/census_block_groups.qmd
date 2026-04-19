@@ -1,33 +1,24 @@
 ## Census Block Groups
 
-```{r Download and Read New York Block Groups}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Download and Read New York Census Block Groups"
-#| results: "hide"
-
-url <- "https://www2.census.gov/geo/tiger/TIGER2025/BG/tl_2025_36_bg.zip"
-dest_in <- "./data_in/census/TIGER2025/BG/tl_2025_36_bg.zip"
-dest_mid <- "./data_mid/census/TIGER2025/BG/tl_2025_36_bg/tl_2025_36_bg.zip"
-
-if(!file.exists(dest_in)) {
-  dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
-  curl_download(url, dest_in)
-  
-  dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
-  unzip(dest_in, exdir = dirname(dest_mid))
-}
-
-new_york_county_bg  <- read_sf("data_mid/census/TIGER2025/BG/tl_2025_36_bg/tl_2025_36_bg.shp") %>%
-  filter(STATEFP == "36", COUNTYFP == "061")
-```
-
 ```{r Plot Manhattan Block Groups}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Plot Manhattan Block Groups"
+#| code-summary: "Leaflet Census Block Groups Map - Manhattan County"
+#| code-line-numbers: "|1-4|6-7|9-11|13-17"
 
-leaflet(new_york_county_bg) %>%
+# Download data using our helper function
+download_data(
+  url = "https://www2.census.gov/geo/tiger/TIGER2025/BG/tl_2025_36_bg.zip",
+  relative_dir = "census/TIGER2025/BG")
+
+# Read Shapefile
+census_blocks  <- read_sf("./data_mid/census/TIGER2025/BG/tl_2025_36_bg.shp")
+
+# Filter to Manhattan County (061)
+new_york_county_bg <- census_blocks %>%
+  filter(STATEFP == "36", COUNTYFP == "061")
+
+# Plot Leaflet Map
+new_york_county_bg %>%
+  leaflet() %>%
   addTiles() %>%
   addPolygons(weight = 0.5, opacity = 1.0)
 ```

@@ -1,39 +1,24 @@
 ## ZIP Codes (ZIP Code Tabulation Areas)
 
-```{r Download and read ZIP Code Tabulation Areas}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Download and read in ZIP Code Tabulation Areas Shapefile"
-#| results: "hide"
+```{r Plot Manhattan-ish ZIP Code Tabulation Areas}
+#| code-summary: "Leaflet Census ZIP Code Tabulation Areas Map - Manhattan County"
+#| code-line-numbers: "|9-11"
 
-url <- "https://www2.census.gov/geo/tiger/TIGER2025/ZCTA520/tl_2025_us_zcta520.zip"
-dest_in <- "./data_in/census/TIGER2025/ZCTA520/tl_2025_us_zcta520.zip"
-dest_mid <- "./data_mid/census/TIGER2025/ZCTA520/tl_2025_us_zcta520/tl_2025_us_zcta520.zip"
-
-if(!file.exists(dest_in)) {
-  dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
-  curl_download(url, dest_in)
-  
-  dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
-  unzip(dest_in, exdir = dirname(dest_mid))
-}
+# Download data using our helper function
+download_data(
+  url = "https://www2.census.gov/geo/tiger/TIGER2025/ZCTA520/tl_2025_us_zcta520.zip",
+  relative_dir = "census/TIGER2025/ZCTA520")
 
 # Read Shapefile
-zcta  <- read_sf("./data_mid/census/TIGER2025/ZCTA520/tl_2025_us_zcta520/tl_2025_us_zcta520.shp")
-```
-
-
-```{r Filter and plot Manhattan ZIP Codes}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
+zcta  <- read_sf("./data_mid/census/TIGER2025/ZCTA520/tl_2025_us_zcta520.shp")
 
 # Filter to New York, NY ZIP codes... sort of - Marble Hill Chopped off
 zcta_manhattan <- zcta %>%
   filter(ZCTA5CE20 %in% c(as.character(seq(from = 10000, to = 10299))))
 
-# Plot on top of Open Street Maps basemap
-leaflet(zcta_manhattan) %>%
+# Plot Leaflet Map
+zcta_manhattan %>%
+  leaflet() %>%
   addTiles() %>%
   addPolygons(weight = 0.5, opacity = 1.0)
 ```

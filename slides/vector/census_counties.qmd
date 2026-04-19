@@ -2,7 +2,7 @@
 
 ```{r New York Counties}
 #| code-summary: "Leaflet County Map - NY"
-#| code-line-numbers: "1-4|6-7|9-14"
+#| code-line-numbers: "|1-4|6-7|9-11|13-17"
 
 # Download data using our helper function
 download_data(
@@ -10,11 +10,14 @@ download_data(
   relative_dir = "census/TIGER2025/COUNTY")
 
 # Read Shapefile
-census_county  <- read_sf("./data_mid/census/TIGER2025/COUNTY/tl_2025_us_county.shp")
+census_county <- read_sf("./data_mid/census/TIGER2025/COUNTY/tl_2025_us_county.shp")
+
+# Filter to Manhattan County (061)
+new_york_counties <- census_county %>%
+  filter(STATEFP == "36")
 
 # Plot Leaflet Map
-census_county %>%
-  filter(STATEFP == "36") %>%
+new_york_counties %>%
   leaflet() %>%
   addTiles() %>%
   addPolygons(weight = 0.5, opacity = 1.0)
