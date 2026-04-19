@@ -12,7 +12,7 @@ manhattan_territory_counts <- data.frame(
     nrow(new_york_county_tracts),
     nrow(new_york_county_bg),
     nrow(new_york_county_blocks),
-    nrow(manhattan_custom_01_grid),
+    nrow(manhattan_01_grid),
     nrow(manhattan_custom_grid)))
 
 datatable(manhattan_territory_counts, rownames = FALSE) %>%

@@ -20,9 +20,9 @@
 
 {{< include /slides/vector/grids.qmd >}}
 
-{{< include /slides/vector/grid_custom.qmd >}}
-
 {{< include /slides/vector/grid_long_lat.qmd >}}
+
+{{< include /slides/vector/grid_custom.qmd >}}
 
 {{< include /slides/vector/shape_counts.qmd >}}
 
