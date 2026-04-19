@@ -16,6 +16,8 @@ manhattan_territory_counts <- data.frame(
     )
   )
 
-datatable(manhattan_territory_counts, rownames = FALSE) %>%
+datatable(manhattan_territory_counts,
+          rownames = FALSE,
+          options = list(dom = 't', ordering = FALSE)) %>%
   formatRound('count', digits = 0, mark = ",")
 ```
