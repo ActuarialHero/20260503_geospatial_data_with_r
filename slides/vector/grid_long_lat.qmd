@@ -10,13 +10,13 @@ manhattan_county <- census_county %>%
 
 # Create the grid & trim it to Manhattan
 # cellsize is in the units of the CRS (decimal degrees)
-manhattan_01_grid <- manhattan_county %>%
+manhattan_grid_decimal_01 <- manhattan_county %>%
   st_make_grid(cellsize = c(0.01, 0.01), square = TRUE) %>%
   st_sf() %>%
   st_intersection(manhattan_county)
 
 # Plot
-leaflet(manhattan_01_grid) %>%
+leaflet(manhattan_grid_decimal_01) %>%
   addTiles() %>%
   addPolygons(weight = 0.5, opacity = 1.0)
 ```

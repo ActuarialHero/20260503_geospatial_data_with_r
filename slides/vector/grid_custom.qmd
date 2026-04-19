@@ -1,26 +1,23 @@
-## Grids - 100 Meter x 100 Meter
+## Grids - 100 x 100 Meter
 
-```{r Construct a custom grid}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
+```{r Construct & Plot 100 x 100 Meter Grid}
+#| code-summary: "Construct & Plot 100 x 100 Meter Grid"
+#| code-line-numbers: "|3|8|11|13-16"
 
-# Filter county data set to Manhattan
-manhattan_county_utm <- census_county %>%
-  filter(STATEFP == "36" & COUNTYFP == "061") %>%
-  st_transform(crs = 32618) # This one's in meters
+# Transform to a meter-based coordinate reference system
+manhattan_county_utm <- manhattan_county %>%
+  st_transform(crs = 32618) # Meter-based coordinate reference system
 
-# 3. Create the grid
+# Create grid and trim to Manhattan
 # cellsize is in the units of the CRS (meters)
-grid <- st_make_grid(manhattan_county_utm, cellsize = c(100, 100), square = TRUE)
-
-# 4. Convert grid to sf object and crop it to the island's shape
-grid_sf <- st_sf(grid)
-manhattan_custom_grid <- st_intersection(grid_sf, manhattan_county_utm) %>%
-  st_transform(crs = st_crs(census_county)) # Transform back to line up with leaflet
+manhattan_grid_meter_100 <- manhattan_county_utm %>%
+  st_make_grid(cellsize = c(100, 100), square = TRUE) %>%
+  st_sf() %>%
+  st_intersection(manhattan_county_utm) %>%
+  st_transform(crs = st_crs(census_county))
 
 # Plot
-leaflet(manhattan_custom_grid) %>%
+leaflet(manhattan_grid_meter_100) %>% 
   addTiles() %>%
   addPolygons(weight = 0.5, opacity = 1.0)
 ```

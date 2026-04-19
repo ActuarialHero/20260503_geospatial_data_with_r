@@ -1,15 +1,18 @@
 ## Grids
 
-- Grids are simpler
+- Grids have simpler boundaries
+- Grids have standardized sizing
 - Pre-existing grids:
   - 1 km x 1 km Military Grid Reference System (MGRS)
-- Construct your own. Two examples:
-  - 100 M x 100 M example
-  - 0.01 Longitude x 0.01 Latitude 
+- [Construct your own. Two examples:]{.fragment fragment-index="1" .highlight-burnt-red}
+  - [0.01 Longitude x 0.01 Latitude]{.fragment fragment-index="1" .highlight-burnt-red}
+  - [100 M x 100 M example]{.fragment fragment-index="1" .highlight-burnt-red}
 
 ::: {.notes}
+
 - State Farm uses a longitude / latitude grid. Virginia example: SFMA-131879778
 - Stillwater Insurance Company in Mississippi uses 250 m x 250 m grid for Hurricane (FDLY-131846574)
 - Metromile Insurance (Lemonade) uses 200 m x 200 m grids in Ohio (MOCC-133615692)
 - For some purposes, the grid can change resolutions, for example, documentation from a cat modeling vendor in filings uses more granlarity in Dallas and Oklahoma City than in rural areas nearby (AMMH-134880342)
+
 :::
