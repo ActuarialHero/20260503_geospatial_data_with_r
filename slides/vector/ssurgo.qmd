@@ -2,7 +2,7 @@
 
 :::{.incremental} 
 
-- Download **by county** from https://websoilsurvey.nrcs.usda.gov/app/WebSoilSurvey.aspx
+- Download **by county** from [Web Soil Survey](https://websoilsurvey.nrcs.usda.gov/app/WebSoilSurvey.aspx)
 - Shapefile with an ID
 - Separate text files contain the data
   - [Documentation](https://www.nrcs.usda.gov/resources/data-and-reports/soil-survey-geographic-database-ssurgo)
@@ -19,13 +19,11 @@ SERFF: FAIG-134593537, MUOF-134283674, AMMH-134210246
 
 :::
 
-## SSURGO - Manhattan - Available Water Storage to 50 CM
+## SSURGO - Download Manhattan County Data
 
-```{r Download Soil Survey Data & Setup Names}
+```{r Download Soil Survey Data, Set Names, & Data Types}
+#| code-summary: "Download Soil Survey Data, Set Names, & Data Types"
 #| echo: true
-#| code-fold: true
-#| code-summary: "Download Soil Survey Data & Create Names"
-#| results: "hide"
 
 download_data(
   url = "https://websoilsurvey.sc.egov.usda.gov/DSD/Download/Cache/SSA/wss_SSA_NY061_soildb_US_2003_[2025-08-28].zip",
@@ -76,11 +74,13 @@ muaggatt_names <- c(
 muaggatt_types <- c("cclnnnnnccnnnnnccclnnncccccccccccccncnnc")
 ```
 
-```{r Manhattan SSURGO}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
+## SSURGO - Manhattan - Available Water Storage to 50 CM
 
+
+
+```{r Manhattan SSURGO}
+#| code-summary: "Read, join, & display SSURGO data"
+#| code-line-numbers: "|1-5|7-9|11-12|14-16|17-19|20-24"
 
 # Read muaggatt data file for New York County
 muaggatt <- read_delim(
@@ -96,7 +96,8 @@ ssurgo <- read_sf("data_mid/ssurgo/NY061/spatial/soilmu_a_ny061.shp") %>%
 aws_pal <- colorBin("Blues", ssurgo$aws050wta, 5, pretty = FALSE)
 
 # Create available water storage plot plot
-leaflet(ssurgo) %>%
+ssurgo %>%
+  leaflet() %>%
   addPolygons(weight = 0.5,
               opacity = 1.0, fillOpacity = 1.0,
               fillColor = ~aws_pal(aws050wta)) %>%
