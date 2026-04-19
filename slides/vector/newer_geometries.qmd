@@ -1,14 +1,17 @@
 ## Newer Geometries
 
-- Spherical: s2 geometry
+- Spherical: S2 Geometry
   - Used by Tinder
-  - http://s2geometry.io/
-  - https://r-spatial.github.io/s2/
-- Hexagonal: h3 geometry
+  - [S2 Geometry Reference](http://s2geometry.io/)
+  - [S2 R Package](https://r-spatial.github.io/s2/)
+- Hexagonal: H3 Indexing
   - Used by Uber
-  - https://h3geo.org/
-- Hexagonal (probably not h3):
-  - Alfa Mutual using 2,600 hexagons coverage Alabama.
+  - [H3 Indexing Reference](https://h3geo.org/)
+  - [H3 R Package](https://crazycapivara.github.io/h3-r/index.html)
+- Hexagonal: Alfa Mutual
+  - 2,600 hexagons coverage Alabama
+  - Date Filed: 2025-05-14
+  - Date Effective: 2025-08-24
 
 ::: {.notes}
 s2 was used by Tinder
