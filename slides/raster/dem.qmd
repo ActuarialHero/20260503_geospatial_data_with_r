@@ -1,11 +1,10 @@
 ## USGS Digital Elevation Map (DEM)
 
-```{r Download DEM Rasters}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Download NLCD Raster"
-#| results: "hide"
+```{r Download & Plot DEM Rasters}
+#| code-summary: "Download & Plot DEM Rasters"
+#| code-line-numbers: "|1-11|13-16|18-21|23-24|26-30|32-36"
 
+# Download files
 url <- c("https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/current/n41w075/USGS_13_n41w075.tif",
          "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/13/TIFF/current/n41w074/USGS_13_n41w074.tif")
 dest_in <- c("./data_in/dem/USGS_13_n41w075.tif","./data_in/dem/USGS_13_n41w074.tif")
@@ -16,19 +15,31 @@ for(i in 1:length(url)){
     curl_download(url[i], dest_in[i])
   }
 }
-```
 
-```{r A slice of the DEM}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Merge and display DEM"
-
+# Merge tiles
 dem <- merge(
   rast("data_in/dem/USGS_13_n41w075.tif"),
   rast("data_in/dem/USGS_13_n41w074.tif"))
 
-plot(dem)
+# Transform Manhattan County Shape to match DEM
+manhattan_county_dem <- census_county %>%
+  filter(GEOID == "36061") %>%
+  st_transform(crs(dem))
 
+# Crop & Mask NLCD
+dem_man <- crop(dem, manhattan_county_dem, mask = TRUE)
+
+# Create color palette
+pal <- colorNumeric(
+  palette = c("#2b83ba", "#abdda4", "#ffffbf", "#fdae61", "#d7191c"), 
+  domain = values(dem_man)
+)
+
+# Plot
+leaflet() %>%
+  addTiles() %>%
+  addRasterImage(dem_man, colors = pal, opacity = 0.8) %>%
+  addLegend(pal = pal, values = na.omit(values(dem_man)) , title = "Elevation (m)")
 ```
 
 ::: {.notes }
@@ -36,6 +47,5 @@ USGS - Variety of resolutions. Using 1/3 Arc Second (approximately 10 m x 10 m)
 
 Download in 1 degree x 1 degree increments
 1056 tiles
-
 
 :::

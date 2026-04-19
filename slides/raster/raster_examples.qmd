@@ -1,0 +1,10 @@
+## Raster Data Examples in Insurance Filings
+
+- [Digital Elevation Model (DEM)]{.fragment fragment-index="1" .highlight-burnt-red}
+- [National Land Cover Database (NLCD)]{.fragment fragment-index="1" .highlight-burnt-red}
+- PRISM Weather Data
+
+::: {.notes}
+
+We'll focus on the Digital Elevation Model and the National Land Cover Data Set
+:::

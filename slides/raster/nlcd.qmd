@@ -1,36 +1,21 @@
 ## National Land Cover Dataset (NLCD)
 
-Giant Raster (pixel) image
-
-```{r Download NLCD Raster}
-#| echo: true
+```{r Download & Plot NLCD Map}
+#| code-summary: "NLCD Map"
+#| code-line-numbers: "|1-4|6-7|9-10"
 #| code-fold: true
-#| code-summary: "Download NLCD Raster"
-#| results: "hide"
+#| 
+# Download data using our helper function
+download_data(
+  url = "https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/data-bundles/Annual_NLCD_LndCov_2024_CU_C1V1.zip",
+  relative_dir = "nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.zip")
 
-url <- "https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/data-bundles/Annual_NLCD_LndCov_2024_CU_C1V1.zip"
-dest_in <- "./data_in/nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.zip"
-dest_mid <- "./data_mid/nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.zip"
+# Point to data
+nlcd <- rast("data_mid/nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.zip/Annual_NLCD_LndCov_2024_CU_C1V1.tif")
 
-if(!file.exists(dest_in)) {
-  dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
-  curl_download(url, dest_in)
-  
-  dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
-  unzip(dest_in, exdir = dirname(dest_mid))
-}
-
-dest_mid
-
-```
-
-```{r Countrywide NLCD Raster}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
-
-nlcd <- rast("data_mid/nlcd/Annual_NLCD_LndCov_2024_CU_C1V1.tif")
+# Static Plot
 plot(nlcd)
+
 ```
 
 ::: {.notes }
@@ -45,27 +30,21 @@ Depicts the predominant thematic land cover class within the mapping year with r
 
 ## NLCD in Manhattan
 
-```{r NLCD Raster  trimmed to Manhattan}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
+```{r Plot NLCD for Manhattan}
+#| code-summary: "NLCD Manhattan"
+#| code-line-numbers: "|1-4|6-7|9-13"
 
-manhattan_county <- census_county %>%
+# Transform Manhattan County Shape to match NLCD
+manhattan_county_nlcd <- census_county %>%
   filter(GEOID == "36061") %>%
   st_transform(crs(nlcd))
 
-# Mask = TRUE crops to the boards rather than a rectangle
-nlcd_man <- crop(nlcd, manhattan_county, mask = TRUE)
-```
+# Crop & Mask NLCD
+nlcd_man <- crop(nlcd, manhattan_county_nlcd, mask = TRUE)
 
-```{r Plot NLCD for Manhattan}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
-
+# Plot
 leaflet() %>%
-addTiles() %>%
+  addTiles() %>%
   addRasterImage(nlcd_man, opacity = 0.8) %>%
   addRasterLegend(nlcd_man, title = "NLCD Land Cover", opacity = 1)
 ```
-

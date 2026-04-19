@@ -1,6 +1,11 @@
 # Raster Data Sources
-(Slightly Bended Pictures)
+
+{{< include /slides/raster/raster_examples.qmd >}}
 
 {{< include /slides/raster/nlcd.qmd >}}
 
 {{< include /slides/raster/dem.qmd >}}
+
+::: {.notes }
+Now that we've looked at vector sources, let's take a look at raster sources, which are basically image files
+:::

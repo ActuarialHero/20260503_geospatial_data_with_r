@@ -8,3 +8,5 @@ author: "Kevin McBeth, FCAS, MAAA"
 {{< include slides/data_types/data_types.qmd >}}
 
 {{< include slides/vector/vector_sources.qmd >}}
+
+{{< include slides/raster/raster_sources.qmd >}}
