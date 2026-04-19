@@ -110,4 +110,6 @@ ssurgo %>%
 
 :::{.notes }
 "Available water storage or available water capacity (AWC) refers to the quantity of water that the soil is capable of storing for use by plants. The capacity for water storage is given in centimeters of water per centimeter of soil for each soil layer"
+
+The rest of the variables work similar to this one
 :::
