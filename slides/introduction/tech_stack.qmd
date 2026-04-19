@@ -1,12 +1,12 @@
 ## Tech Stack
 
 - R
-- Integrated Development Environments (IDEs)
-  - RStudio - IDE from the company Posit (formerly named RStudio)
-  - Positron - Visual Studio Code-based IDE from Posit
+- RStudio - IDE from the company Posit (formerly named RStudio)
+- Mac - You'll need to swap "/" to "\\" to render on PC
 - Quarto - Presentation + code together
 - GitHub - Source code control
 - GitHub Pages - Publishing the rendered presentation online (automatically!)
+
 
 ::: {.notes}
 Obviously given the title of the presentation, we're using R.
@@ -19,10 +19,8 @@ I used a mix of RStudio, and Positron for creating the presentation. Positron is
 ## Tech Stack - R Libraries
 
 ```{r import_libraries}
-#| code-line-numbers: "1-5|7-11|12-14"
-#| echo: true
-#| code-fold: false
 #| code-summary: "Import libraries"
+#| code-line-numbers: "|1-5|7-11|12-14"
 
 # Geospatial-specific
 library(sf) # For working with vector geospatial data. Replaced rgdal and rgeos
@@ -50,25 +48,27 @@ I also reference curl, readr, and dplyr for downlaoding and data manipulation, a
 ## Tech Stack - Download Helper Function
 
 ```{r Download Helper}
-#| echo: true
-#| code-fold: false
 #| code-summary: "Download Helper"
+#| code-line-numbers: "|6-11|13-18"
 
 download_data <- function(url, relative_dir) {
   
+  # URL
   filename <- basename(url)
-  dest_in <- paste("./data_in", relative_dir, filename, sep = "/")
-  dest_mid <- paste("./data_mid", relative_dir, filename, sep = "/")
   
+  # Download to Data In
+  dest_in <- paste("./data_in", relative_dir, filename, sep = "/")
   if(!file.exists(dest_in)) {
     dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
     curl_download(url, dest_in)
-    
+  }
+  
+  # Extract to Data Mid
+  dest_mid <- paste("./data_mid", relative_dir, filename, sep = "/")
+  if(!file.exists(dest_mid)) {
     dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
     unzip(dest_in, exdir = dirname(dest_mid))
   }
-  
-  dest_mid
 }
 ```
 

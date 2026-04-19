@@ -1,10 +1,9 @@
-## Example Sources of Vector Data
+## Vector Data Examples in Insurance Filings
 
-
-- Census Bureau Boundary Shapefiles
-- Longitude/Latitude Grids
+- [Census Bureau Boundary Shapefiles]{.fragment fragment-index="1" .highlight-burnt-red}
+- [Longitude/Latitude Grids]{.fragment fragment-index="1" .highlight-burnt-red}
 - Any other territory boundary
-- Soils Survey Geographic Database (USDA SSURGO)
+- [Soils Survey Geographic Database (USDA SSURGO)]{.fragment fragment-index="1" .highlight-burnt-red}
 - National Hurricane Center Hurricane Paths
 - NOAA Severe Weather Data Inventory
 - And more!

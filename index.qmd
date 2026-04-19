@@ -8,15 +8,3 @@ author: "Kevin McBeth, FCAS, MAAA"
 {{< include slides/data_types/data_types.qmd >}}
 
 {{< include slides/vector/vector_sources.qmd >}}
-
-{{< include slides/raster/raster_sources.qmd >}}
-
-{{< include slides/features/features.qmd >}}
-
-{{< include slides/location/location_data.qmd >}}
-
-{{< include slides/modeling/modeling.qmd >}}
-
-{{< include slides/examples/example_maps.qmd >}}
-
-{{< include slides/conclusion/conclusion.qmd >}}

@@ -6,8 +6,10 @@ format:
   revealjs:
     theme: [simple, styles.scss]
     fontsize: 1.5em # 16px is standard, so this is 24 > 22 CAS minimum
-    slide-number: true
     embed-resources: true
+    slide-number: true
+    echo: true
+    code-fold: show
 editor: 
   mode: source
   

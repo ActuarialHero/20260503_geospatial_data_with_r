@@ -137,7 +137,7 @@ leaflet(zip_carrier_1_ny) %>%
     color = "white",
     weight = 1.0,
     fillOpacity = 0.7) %>%
-  addLegend(pal = pal, values = ~theft, title = "Hurricane Factor")
+  addLegend(pal = pal, values = ~theft, title = "Theft")
 ```
 
 
@@ -164,5 +164,5 @@ leaflet(zip_carrier_1_ny) %>%
     color = "white",
     weight = 1.0,
     fillOpacity = 0.7) %>%
-  addLegend(pal = pal, values = ~hurricane, title = "Hurricane Factor")
+  addLegend(pal = pal, values = ~hurricane, title = "Hurricane")
 ```

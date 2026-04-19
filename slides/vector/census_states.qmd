@@ -1,37 +1,19 @@
 ## States
 
-```{r Download Census State Shapefile}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Download Shapefiles"
-#| results: "hide"
+```{r Read Census Bureau Shapefile & Display Data}
+#| code-summary: "Read Census Bureau Shapefile & Display Data"
+#| code-line-numbers: "1-4|6-7|9-10"
 
-url <- "https://www2.census.gov/geo/tiger/TIGER2025/STATE/tl_2025_us_state.zip"
-dest_in <- "./data_in/census/TIGER2025/STATE/tl_2025_us_state.zip"
-dest_mid <- "./data_mid/census/TIGER2025/STATE/tl_2025_us_state/tl_2025_us_state.zip"
+# Download data using our helper function
+download_data(
+  url = "https://www2.census.gov/geo/tiger/TIGER2025/STATE/tl_2025_us_state.zip",
+  relative_dir = "census/TIGER2025/STATE")
 
-if(!file.exists(dest_in)) {
-  dir.create(dirname(dest_in), recursive = TRUE, showWarnings = FALSE)
-  curl_download(url, dest_in)
-  
-  dir.create(dirname(dest_mid), recursive = TRUE, showWarnings = FALSE)
-  unzip(dest_in, exdir = dirname(dest_mid))
-}
-
-dest_mid
-
-```
-
-```{r Read Census State Shapefile into memory}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Read Census Shapefile and display data"
-
-# Read Census State Shapefile
-census_state  <- read_sf("./data_mid/census/TIGER2025/STATE/tl_2025_us_state/tl_2025_us_state.shp")
+# Read Shapefile
+census_state  <- read_sf("./data_mid/census/TIGER2025/STATE/tl_2025_us_state.shp")
 
 # Print data table
-census_state %>% arrange(STATEFP)
+census_state %>% arrange(STATEFP) %>% print(n = Inf)
 ```
 
 ::: {.notes}
@@ -44,16 +26,18 @@ census_state %>% arrange(STATEFP)
 * The columns we care about are STATEFP, STUSPS, and NAME
 * STATEFP is a handy code used throughout the Census data. If you look at rows 2 and 3, you'll see it skips from 02 to 04. The states are coded from 01 to 56, with placeholders to slot in territories alphabecially if they're converted to states. Note that on row 9, the Federal District, DC, is slotted in place with STATEFP = 11.
 
+* geometry <MULTIPOLYGON [°]>
+
+* This doesn't have the Census data, like population or household units attached. If you want to use those, you'll need to attach them
+
 State: Since regulatory approval is by state, this is the least granular your territory can possibly be
 :::
 
 ## New York Leaflet Plot
 
 ```{r Census State Leaflet Plot - NY}
+#| code-summary: "Leaflet Plot - NY"
 #| code-line-numbers: "1|2|3|4"
-#| echo: true
-#| code-fold: show
-#| code-summary: "Leaflet Code"
 
 census_state %>%
   filter(STUSPS == "NY") %>%
@@ -64,14 +48,12 @@ census_state %>%
 ## New York Leaflet Plot With Basemap
 
 ```{r Census State Leaflet Plot With Basemap - NY}
-#| code-line-numbers: "4"
-#| echo: true
-#| code-fold: show
-#| code-summary: "Leaflet Code"
+#| code-summary: "Add Basemap"
+#| code-line-numbers: "5"
 
 census_state %>%
   filter(STUSPS == "NY") %>%
   leaflet() %>%
-  addTiles() %>% # Added OpenStreetMap Basemap
-  addPolygons(weight = 0.5, opacity = 1.0)
+  addPolygons(weight = 0.5, opacity = 1.0) %>%
+  addTiles() # Added OpenStreetMap Basemap
 ```

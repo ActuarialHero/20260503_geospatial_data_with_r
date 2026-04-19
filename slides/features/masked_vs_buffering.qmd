@@ -23,6 +23,7 @@ datatable(masked_vs_buffered_percent, rownames = FALSE) %>%
 #| echo: true
 #| code-fold: true
 #| code-summary: "Show code"
+#| code-line-numbers: "1-2|4-6"
 
 # Filter to nulls
 masked_vs_buffered_percent_null <- masked_vs_buffered_percent %>%
