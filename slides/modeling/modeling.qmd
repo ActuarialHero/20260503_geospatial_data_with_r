@@ -1,5 +1,7 @@
 # Modeling the Cost of Home Insurance
 
+## High-level Considerations
+
 - Pure Premium vs. Frequency / Severity
 - By-peril vs. All Perils
 - Modeling & Holdout Data Sets
@@ -8,7 +10,7 @@
 
 Variables predictive for one peril may not be predictive for others.
 You need good peril classification of data
-Storms can cause multiple claims, leading to correlations across policies in the data set.
+Storms can cause multiple claims, leading to correlations across policies in the data set
 
 :::
 
@@ -52,9 +54,10 @@ https://xkcd.com/license.html
 :::{.incremental}
 
 - Territory Tables are pre-scored and static
+  - Feature engineering is computationally expensive
+- The more complicated they get, the harder the implementation gets
 - May need to update the filing for re-scoring
 - Model version used based on policy effective date
-- The more complicated they get, the harder the implementation gets
 - Make sure your territory assignments match your territories
 
 :::

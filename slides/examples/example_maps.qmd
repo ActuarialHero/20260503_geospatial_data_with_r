@@ -1,7 +1,5 @@
 # Example Territory Maps
 
-Synthesized factors based on two Top 10 carrier territory maps
-
 {{< include /slides/examples/carrier_1.qmd >}}
 
 {{< include /slides/examples/carrier_2.qmd >}}

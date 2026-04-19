@@ -1,6 +1,7 @@
-## Location-specific features
+## Example Location-specific features
 
-- Direct assignment of values to specific properties
+Direct assignment of values to specific properties
+
 - Distance to Coast
 - Distance to Water (lakes, rivers, etc.)
 - Flood zone determination
@@ -10,3 +11,9 @@
 - Attractive Nuisances
   - Swimming Pools
   - Trampolines
+
+:::{.notes }
+As opposed to territories that summarize the area the home is in, location-specific features are unique to the property.
+
+If you go to Insurtech Connect in Las Vegas, you walk by dozens vendors in this space
+:::

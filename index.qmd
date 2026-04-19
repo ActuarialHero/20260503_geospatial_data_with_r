@@ -10,3 +10,13 @@ author: "Kevin McBeth, FCAS, MAAA"
 {{< include slides/vector/vector_sources.qmd >}}
 
 {{< include slides/raster/raster_sources.qmd >}}
+
+
+
+{{< include slides/location/location_data.qmd >}}
+
+{{< include slides/modeling/modeling.qmd >}}
+
+{{< include slides/examples/example_maps.qmd >}}
+
+{{< include slides/conclusion/conclusion.qmd >}}

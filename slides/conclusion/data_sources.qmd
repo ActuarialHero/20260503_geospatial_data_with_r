@@ -8,4 +8,4 @@
 ### Raster
 
 - [National Land Cover Dataset](https://www.mrlc.gov/data)
-- [Digitel Elevation Model at USGS The National Map Download](https://apps.nationalmap.gov/downloader/)
+- [Digitel Elevation Model at USGS "The National Map" Download](https://apps.nationalmap.gov/downloader/)

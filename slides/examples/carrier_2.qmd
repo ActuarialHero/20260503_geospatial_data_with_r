@@ -10,11 +10,10 @@
 ## Carrier 2 - Factor Table
 
 ```{r Read in Carrier 2 Territory Factor Table}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
+#| code-summary: "Read in Carrier 2 Factors & Construct Grid"
+#| code-line-numbers: "|1-4|5-7|8|11-14"
 
-# Starts extracting the table from PDF
+# CSV extracted from PDF with synthetic factors
 carrier_2_ny <- read_csv("./data_in/examples/carrier_2_synthetic.csv",
                          col_names = c("GRID_ID", "HURR_FCTR", "NONHURR_FCTR"),
                          skip = 1)  %>%
@@ -23,6 +22,7 @@ carrier_2_ny <- read_csv("./data_in/examples/carrier_2_synthetic.csv",
     x = round(- 0.01 * as.numeric(substr(GRID_ID, 6, 10)), 2)) %>%
   select(GRID_ID, y, x, HURR_FCTR, NONHURR_FCTR)
 
+# Create table
 carrier_2_ny %>%
   datatable(rownames = FALSE) %>%
   formatRound(columns = c(2, 3), digits = 2) %>%
@@ -31,13 +31,11 @@ carrier_2_ny %>%
 
 ## Carrier 2 - Synthetic Non-Hurricane Factors
 
-```{r New York State}
-#| echo: true
-#| code-fold: true
-#| code-summary: "Show code"
+```{r Carrier 2 NY Non-Hurricane Factors}
+#| code-summary: "Create and plot Non-Hurricane Factor Raster"
+#| code-line-numbers: "|1-2|4-10|12-16"
 
-
-# Turn it into a raster
+# Convert non-Hurricane Factors to Raster
 nonhurr_ny <- rast(carrier_2_ny[, c("x", "y", "NONHURR_FCTR")], crs = crs('+proj=longlat +datum=WGS84'))
 
 # Set up a color palette
@@ -57,13 +55,11 @@ leaflet() %>%
 
 ## Carrier 2 - Synthetic Hurricane Factors
 
-```{r Carrier 2 NY hurricane factors}
-#| echo: true
+```{r Carrier 2 NY Hurricane Factors}
+#| code-summary: "Create and plot Hurricane Factor Raster"
 #| code-fold: true
-#| code-summary: "Show code"
 
-
-# Turn it into a raster
+# Convert Hurricane Factors to Raster
 hurr_ny <- rast(carrier_2_ny[, c("x", "y", "HURR_FCTR")], crs = crs('+proj=longlat +datum=WGS84'))
 
 # Set up a color palette
