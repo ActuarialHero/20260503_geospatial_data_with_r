@@ -2,7 +2,6 @@
 
 ## Conclusion
 
-::: {.incremental}
 - Tech Stack
 - Types of Geospatial Data
 - Vector Data Sources
@@ -12,6 +11,16 @@
 - Modeling
 - Example Territory Maps
 - Conclusion
+
+::: {.notes }
+Today we talked about the two types of geospatial data: vector and raster
+
+Worked through a variety of examples in R
+
+Add looked at some sample territory maps for some perils at two carriers
+
+I'll open it up to any remaining questions
+
 :::
 
 ## Questions
