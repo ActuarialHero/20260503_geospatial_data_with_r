@@ -19,7 +19,9 @@ Source code on GitHub:
 
 No need to take photos of slides during the presentation.
 
-They're posted on my GitHub page and on the CAS website.
+They're posted on my GitHub page and on the CAS website
+
+I encourage you to grab the copy from GitHub. The PDF version on the CAS website doesn't have the interactivity
 
 Slides on the left
 

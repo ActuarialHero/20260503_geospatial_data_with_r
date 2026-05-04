@@ -8,8 +8,10 @@
 
 ::: {.notes}
 
-Variables predictive for one peril may not be predictive for others.
+Variables predictive for one peril may not be predictive for others
+
 You need good peril classification of data
+
 Storms can cause multiple claims, leading to correlations across policies in the data set
 
 :::
@@ -19,7 +21,7 @@ Storms can cause multiple claims, leading to correlations across policies in the
 - State Statutes may influence territory boundaries:
   - Minnesota Statute 72A.20 Subd. 13
 - Some state regulators don't like specific variables
-- Some regulatory require revealing more information about your model
+- Some regulatory institutions require revealing more information about your model
 - Data availability
   - Some of the data sets aren't available in Alaska and/or Hawaii
   - The data is available, but different

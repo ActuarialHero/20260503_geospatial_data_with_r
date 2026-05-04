@@ -11,5 +11,5 @@
 ::: {.notes}
 More examples than we can possibly cover today.
 
-We'll focus on the Census Bureau and Soil Survey shapefiles
+We'll focus on the Census Bureau and Soil Survey shapefiles as well as grids
 :::

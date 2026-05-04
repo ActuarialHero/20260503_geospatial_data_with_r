@@ -19,6 +19,8 @@ plot(nlcd)
 ```
 
 ::: {.notes }
+Expand code
+
 National Land Cover Data set
 
 Depicts the predominant thematic land cover class within the mapping year with respect to broad categories of artificial or natural surface cover

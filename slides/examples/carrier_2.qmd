@@ -41,7 +41,7 @@ nonhurr_ny <- rast(carrier_2_ny[, c("x", "y", "NONHURR_FCTR")], crs = crs('+proj
 pal <- colorBin(
   palette = c("#2c7bb6", "#abd9e9","#ffffbf","#fdae61","#d7191c"),
   domain = values(nonhurr_ny),
-  bins = c(0.75, 1.0, 1.25, 1.5, 1.75),
+  bins = c(0.75, 1.00, 1.25, 1.5, 1.75),
   na.color = "transparent"
 )
 
