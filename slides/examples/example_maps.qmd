@@ -3,3 +3,12 @@
 {{< include /slides/examples/carrier_1.qmd >}}
 
 {{< include /slides/examples/carrier_2.qmd >}}
+
+::: {.notes }
+
+We'll look at two carriers from the top 10 homeowners insurers in NY
+
+I synthesized factors similar to those contained in the filings
+
+They'll have the same general conclusions
+:::

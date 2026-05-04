@@ -14,11 +14,6 @@ ZIP Code-based territories
 
 Synthesized factors similar to the real factors, but not the actual factors
 
-::: {.notes}
-Carrier one has 12 perils. We'll look at a few of them.
-
-:::
-
 ```{r Read in Carrier 1 Factors & Join to ZCTA File}
 #| code-summary: "Read in Carrier 1 Factors & Join to ZCTA File"
 #| code-line-numbers: "|1-8|10-14|12-13"
@@ -39,6 +34,14 @@ zip_carrier_1_ny <- zcta %>%
   inner_join(carrier_1_ny, by = c("ZCTA5CE20" = "zip"))
 ```
 
+::: {.notes}
+Carrier 1 has 12 perils. We'll look at a few of them.
+
+They use a ZIP-code base territory mapping
+
+:::
+
+
 ## Carrier 1 - Factor Table
 
 ```{r Carrier 1 Territory Factor Table}
@@ -58,6 +61,12 @@ carrier_1_factors %>%
   datatable(rownames = FALSE) %>%
   formatRound(columns = nums, digits = 4)
 ```
+
+::: {.notes}
+Let's look at the factor table first
+
+This code mostly formats the table semi-nicely
+:::
 
 ## Carrier 1 - Weather Water
 
@@ -84,6 +93,12 @@ leaflet(zip_carrier_1_ny) %>%
   addLegend(pal = pal, values = ~water_weather, title = "Weather Water")
 ```
 
+::: {.notes}
+I wish I could give you some nice conclusions, but this one looks pretty smooth
+
+They feel there's more weather water risk on the western part of the state
+:::
+
 ## Carrier 1 - Wind
 
 ```{r Carrier 1 NY Wind}
@@ -108,8 +123,6 @@ leaflet(zip_carrier_1_ny) %>%
     fillOpacity = 0.7) %>%
   addLegend(pal = pal, values = ~wind, title = "Wind")
 ```
-
-
 
 ## Carrier 1 - Theft
 
@@ -136,6 +149,12 @@ leaflet(zip_carrier_1_ny) %>%
   addLegend(pal = pal, values = ~theft, title = "Theft")
 ```
 
+::: {.notes}
+
+Theft is interesting - Buffalo, Rochester, and Manhattan/Brooklyn/Queens pop.
+
+I'm a little confused why the Bronx is shown as low-risk
+:::
 
 ## Carrier 1 - Hurricane
 
@@ -161,3 +180,9 @@ leaflet(zip_carrier_1_ny) %>%
     fillOpacity = 0.7) %>%
   addLegend(pal = pal, values = ~hurricane, title = "Hurricane")
 ```
+
+::: {.notes}
+Hurricane looks exactly like you would expect a hurricane map to look
+
+Those factors at the tip of Long Island are quite high
+:::

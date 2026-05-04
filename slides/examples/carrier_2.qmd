@@ -52,6 +52,14 @@ leaflet() %>%
   addLegend(pal = pal, values = values(nonhurr_ny), title = "Non-Hurricane Factor")
 ```
 
+::: {.notes}
+There's some interesting texture over Lake Ontario
+
+I don't have any strong intuition on this one, but it also bundles a lot of perils together
+
+The tip of long island makes me question how cleanly they split Non-hurricane vs. hurricane
+:::
+
 ## Carrier 2 - Synthetic Hurricane Factors
 
 ```{r Carrier 2 NY Hurricane Factors}
@@ -74,3 +82,10 @@ leaflet() %>%
   addRasterImage(hurr_ny, colors = pal, opacity = 0.5) %>%
   addLegend(pal = pal, values = values(hurr_ny), title = "Hurricane Factor")
 ```
+
+::: {.notes }
+
+Officially, it's a grid, but if you zoom in, it looks like the changes line up with county lines
+
+Note that the range is much narrower. The previous carrier's highest risk bucket was more than twice as high
+:::
